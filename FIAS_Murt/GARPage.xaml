@@ -1,0 +1,41 @@
+﻿<Page x:Class="FIAS_Murt.GARPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:FIAS_Murt"
+      mc:Ignorable="d"
+            Title="Список GAR">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- DataGrid для отображения всех столбцов таблицы GAR -->
+        <DataGrid x:Name="dataGridGar" AutoGenerateColumns="False" Margin="10" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID_GAR" Binding="{Binding ID_GAR}" Width="60" />
+                <DataGridTextColumn Header="Mun_otdel" Binding="{Binding Mun_otdel}" Width="120" />
+                <DataGridTextColumn Header="Administr_otdel" Binding="{Binding Administr_otdel}" Width="120" />
+                <DataGridTextColumn Header="IFNSL_FL" Binding="{Binding IFNSL_FL}" Width="80" />
+                <DataGridTextColumn Header="IFNSL_YL" Binding="{Binding IFNSL_YL}" Width="80" />
+                <DataGridTextColumn Header="OKATO" Binding="{Binding OKATO}" Width="120" />
+                <DataGridTextColumn Header="OKTMO" Binding="{Binding OKTMO}" Width="120" />
+                <DataGridTextColumn Header="Pochta_Index" Binding="{Binding Pochta_Index}" Width="90" />
+                <DataGridTextColumn Header="ID_Reestr" Binding="{Binding ID_Reestr}" Width="80" />
+                <DataGridTextColumn Header="Kadastr_nom" Binding="{Binding Kadastr_nom}" Width="100" />
+                <DataGridTextColumn Header="Status_zap" Binding="{Binding Status_zap}" Width="100" />
+                <DataGridTextColumn Header="Data_Vnesenia" Binding="{Binding Data_Vnesenia}" Width="100" />
+                <DataGridTextColumn Header="Data_aktual" Binding="{Binding Data_aktual}" Width="100" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Панель кнопок для управления -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+            <Button Content="Добавить" Click="AddButton_Click" Width="100" Margin="5" />
+            <Button Content="Изменить" Click="EditButton_Click" Width="100" Margin="5" />
+            <Button Content="Удалить" Click="DeleteButton_Click" Width="100" Margin="5" />
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,1595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище FIAS_PraktikaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="adres_objects">
+          <Key>
+            <PropertyRef Name="ID_GAR" />
+          </Key>
+          <Property Name="ID_GAR" Type="int" Nullable="false" />
+          <Property Name="Naimenovanie" Type="nvarchar" MaxLength="150" />
+          <Property Name="Nalog_ID" Type="int" Nullable="false" />
+          <Property Name="ID_KLADR" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Adres_zayavka">
+          <Key>
+            <PropertyRef Name="ID_adres" />
+          </Key>
+          <Property Name="ID_adres" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Parametr" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Istoriya_znach" Type="nvarchar" MaxLength="100" />
+          <Property Name="Aktual_znach" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dokuments">
+          <Key>
+            <PropertyRef Name="ID_Dok" />
+          </Key>
+          <Property Name="ID_Dok" Type="int" Nullable="false" />
+          <Property Name="Type_Dok" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_Dok" Type="date" />
+          <Property Name="Naimenovanie" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="ID_Empl" />
+          </Key>
+          <Property Name="ID_Empl" Type="int" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="GAR">
+          <Key>
+            <PropertyRef Name="ID_GAR" />
+          </Key>
+          <Property Name="ID_GAR" Type="int" Nullable="false" />
+          <Property Name="Mun_otdel" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Administr_otdel" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="IFNSL_FL" Type="int" Nullable="false" />
+          <Property Name="IFNSL_YL" Type="int" Nullable="false" />
+          <Property Name="OKATO" Type="bigint" Nullable="false" />
+          <Property Name="OKTMO" Type="bigint" Nullable="false" />
+          <Property Name="Pochta_Index" Type="int" Nullable="false" />
+          <Property Name="ID_Reestr" Type="int" Nullable="false" />
+          <Property Name="Kadastr_nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status_zap" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Data_Vnesenia" Type="date" Nullable="false" />
+          <Property Name="Data_aktual" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GAR_Dok">
+          <Key>
+            <PropertyRef Name="ID_GAR" />
+            <PropertyRef Name="ID_Dok" />
+          </Key>
+          <Property Name="ID_GAR" Type="int" Nullable="false" />
+          <Property Name="ID_Dok" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="History_adres">
+          <Key>
+            <PropertyRef Name="ID_change" />
+          </Key>
+          <Property Name="ID_change" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_GAR" Type="int" />
+          <Property Name="Period_deistviya" Type="nvarchar" MaxLength="100" />
+          <Property Name="Stroka_adres" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Istor_izmen">
+          <Key>
+            <PropertyRef Name="ID_Izm" />
+          </Key>
+          <Property Name="ID_Izm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_GAR" Type="int" />
+          <Property Name="Data_izmen" Type="date" />
+          <Property Name="Type_izmen" Type="nvarchar" MaxLength="150" />
+          <Property Name="ID_adres" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Type_status">
+          <Key>
+            <PropertyRef Name="Status_uved" />
+          </Key>
+          <Property Name="Status_uved" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type_uved">
+          <Key>
+            <PropertyRef Name="Type_uvedom" />
+          </Key>
+          <Property Name="Type_uvedom" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type_zayavki">
+          <Key>
+            <PropertyRef Name="Type_zayavki" />
+          </Key>
+          <Property Name="Type_zayavki" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Uvedomleniya">
+          <Key>
+            <PropertyRef Name="ID_Uved" />
+          </Key>
+          <Property Name="ID_Uved" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Zayavki" Type="int" />
+          <Property Name="Type_uved" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status_uved" Type="nvarchar" MaxLength="100" />
+          <Property Name="Data_ispoln_1" Type="date" />
+          <Property Name="Data_ispoln_2" Type="date" />
+          <Property Name="Data_podpis_1" Type="date" />
+          <Property Name="Data_pospis_2" Type="date" />
+          <Property Name="Data_ozhid_ispoln" Type="date" />
+          <Property Name="Kommentarii" Type="nvarchar" MaxLength="150" />
+          <Property Name="Prichina_otkaza" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Zayavka">
+          <Key>
+            <PropertyRef Name="ID_zayavki" />
+          </Key>
+          <Property Name="ID_zayavki" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type_zayavki" Type="nvarchar" MaxLength="100" />
+          <Property Name="Uroven" Type="nvarchar" MaxLength="100" />
+          <Property Name="ID_GAR" Type="int" />
+          <Property Name="Sozdatel_zayav" Type="int" />
+          <Property Name="Data_sozdaniya" Type="date" Nullable="false" />
+          <Property Name="Data_sozd2" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "FIAS_Praktika.dbo.AdresZayavkaProsm" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="AdresZayavkaProsm">
+          <Key>
+            <PropertyRef Name="ID_adres" />
+            <PropertyRef Name="Parametr" />
+            <PropertyRef Name="Aktual_znach" />
+          </Key>
+          <Property Name="ID_adres" Type="int" Nullable="false" />
+          <Property Name="Parametr" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Istoriya_znach" Type="varchar" MaxLength="100" />
+          <Property Name="Aktual_znach" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Data_izmen" Type="date" />
+          <Property Name="Type_izmen" Type="varchar" MaxLength="150" />
+          <Property Name="ID_GAR" Type="int" />
+          <Property Name="Kadastr_nom" Type="varchar" MaxLength="20" />
+          <Property Name="Mun_otdel" Type="varchar" MaxLength="200" />
+          <Property Name="Administr_otdel" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "FIAS_Praktika.dbo.EmployeeActivity" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="EmployeeActivity">
+          <Key>
+            <PropertyRef Name="ID_Empl" />
+            <PropertyRef Name="FIO" />
+            <PropertyRef Name="Phone" />
+          </Key>
+          <Property Name="ID_Empl" Type="int" Nullable="false" />
+          <Property Name="FIO" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="TotalApplications" Type="int" />
+          <Property Name="LastApplicationDate" Type="date" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "FIAS_Praktika.dbo.FullGAR" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="FullGAR">
+          <Key>
+            <PropertyRef Name="ID_GAR" />
+            <PropertyRef Name="Mun_otdel" />
+            <PropertyRef Name="Administr_otdel" />
+            <PropertyRef Name="IFNSL_FL" />
+            <PropertyRef Name="IFNSL_YL" />
+            <PropertyRef Name="OKATO" />
+            <PropertyRef Name="OKTMO" />
+            <PropertyRef Name="Pochta_Index" />
+            <PropertyRef Name="ID_Reestr" />
+            <PropertyRef Name="Kadastr_nom" />
+            <PropertyRef Name="Status_zap" />
+            <PropertyRef Name="Data_Vnesenia" />
+            <PropertyRef Name="Data_aktual" />
+          </Key>
+          <Property Name="ID_GAR" Type="int" Nullable="false" />
+          <Property Name="Mun_otdel" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Administr_otdel" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="IFNSL_FL" Type="int" Nullable="false" />
+          <Property Name="IFNSL_YL" Type="int" Nullable="false" />
+          <Property Name="OKATO" Type="int" Nullable="false" />
+          <Property Name="OKTMO" Type="int" Nullable="false" />
+          <Property Name="Pochta_Index" Type="int" Nullable="false" />
+          <Property Name="ID_Reestr" Type="int" Nullable="false" />
+          <Property Name="Kadastr_nom" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Status_zap" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Data_Vnesenia" Type="date" Nullable="false" />
+          <Property Name="Data_aktual" Type="date" Nullable="false" />
+          <Property Name="FullAddress" Type="varchar" MaxLength="150" />
+          <Property Name="Nalog_ID" Type="int" />
+          <Property Name="ID_KLADR" Type="int" />
+          <Property Name="Period_deistviya" Type="varchar" MaxLength="100" />
+          <Property Name="Stroka_adres" Type="varchar" MaxLength="200" />
+          <Property Name="ID_Dok" Type="int" />
+          <Property Name="Type_Dok" Type="varchar" MaxLength="100" />
+          <Property Name="Date_Dok" Type="date" />
+          <Property Name="DocumentName" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "FIAS_Praktika.dbo.UvedProsm" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="UvedProsm">
+          <Key>
+            <PropertyRef Name="ID_Uved" />
+          </Key>
+          <Property Name="ID_Uved" Type="int" Nullable="false" />
+          <Property Name="ID_Zayavki" Type="int" />
+          <Property Name="Type_zayavki" Type="varchar" MaxLength="100" />
+          <Property Name="Uroven" Type="varchar" MaxLength="100" />
+          <Property Name="Type_uved" Type="varchar" MaxLength="100" />
+          <Property Name="Status_uved" Type="varchar" MaxLength="100" />
+          <Property Name="Data_ispoln_1" Type="date" />
+          <Property Name="Data_ispoln_2" Type="date" />
+          <Property Name="Data_podpis_1" Type="date" />
+          <Property Name="Data_pospis_2" Type="date" />
+          <Property Name="Data_ozhid_ispoln" Type="date" />
+          <Property Name="Kommentarii" Type="varchar" MaxLength="150" />
+          <Property Name="Prichina_otkaza" Type="varchar" MaxLength="150" />
+          <Property Name="CreatorName" Type="varchar" MaxLength="100" />
+          <Property Name="CreatorEmail" Type="varchar" MaxLength="100" />
+          <Property Name="Kadastr_nom" Type="varchar" MaxLength="20" />
+          <Property Name="Mun_otdel" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "FIAS_Praktika.dbo.ZayavkaDetails" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ZayavkaDetails">
+          <Key>
+            <PropertyRef Name="ID_zayavki" />
+            <PropertyRef Name="Data_sozdaniya" />
+            <PropertyRef Name="Data_sozd2" />
+          </Key>
+          <Property Name="ID_zayavki" Type="int" Nullable="false" />
+          <Property Name="Type_zayavki" Type="varchar" MaxLength="100" />
+          <Property Name="Uroven" Type="varchar" MaxLength="100" />
+          <Property Name="Data_sozdaniya" Type="date" Nullable="false" />
+          <Property Name="Data_sozd2" Type="date" Nullable="false" />
+          <Property Name="Kadastr_nom" Type="varchar" MaxLength="20" />
+          <Property Name="Mun_otdel" Type="varchar" MaxLength="200" />
+          <Property Name="Administr_otdel" Type="varchar" MaxLength="200" />
+          <Property Name="FIO" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="12" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="ChangeCount" Type="int" />
+          <Property Name="LatestDocumentType" Type="varchar" MaxLength="100" />
+          <Property Name="LatestDocumentName" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK__adres_obj__ID_GA__4E88ABD4">
+          <End Role="GAR" Type="Self.GAR" Multiplicity="1" />
+          <End Role="adres_objects" Type="Self.adres_objects" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="GAR">
+              <PropertyRef Name="ID_GAR" />
+            </Principal>
+            <Dependent Role="adres_objects">
+              <PropertyRef Name="ID_GAR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GAR_Dok__ID_Dok__49C3F6B7">
+          <End Role="Dokuments" Type="Self.Dokuments" Multiplicity="1" />
+          <End Role="GAR_Dok" Type="Self.GAR_Dok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dokuments">
+              <PropertyRef Name="ID_Dok" />
+            </Principal>
+            <Dependent Role="GAR_Dok">
+              <PropertyRef Name="ID_Dok" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GAR_Dok__ID_GAR__48CFD27E">
+          <End Role="GAR" Type="Self.GAR" Multiplicity="1" />
+          <End Role="GAR_Dok" Type="Self.GAR_Dok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GAR">
+              <PropertyRef Name="ID_GAR" />
+            </Principal>
+            <Dependent Role="GAR_Dok">
+              <PropertyRef Name="ID_GAR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__History_a__ID_GA__5165187F">
+          <End Role="GAR" Type="Self.GAR" Multiplicity="0..1" />
+          <End Role="History_adres" Type="Self.History_adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GAR">
+              <PropertyRef Name="ID_GAR" />
+            </Principal>
+            <Dependent Role="History_adres">
+              <PropertyRef Name="ID_GAR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Istor_izm__ID_ad__70DDC3D8">
+          <End Role="Adres_zayavka" Type="Self.Adres_zayavka" Multiplicity="0..1" />
+          <End Role="Istor_izmen" Type="Self.Istor_izmen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres_zayavka">
+              <PropertyRef Name="ID_adres" />
+            </Principal>
+            <Dependent Role="Istor_izmen">
+              <PropertyRef Name="ID_adres" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Istor_izm__ID_GA__6FE99F9F">
+          <End Role="GAR" Type="Self.GAR" Multiplicity="0..1" />
+          <End Role="Istor_izmen" Type="Self.Istor_izmen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GAR">
+              <PropertyRef Name="ID_GAR" />
+            </Principal>
+            <Dependent Role="Istor_izmen">
+              <PropertyRef Name="ID_GAR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Uvedomlen__ID_Za__60A75C0F">
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="0..1" />
+          <End Role="Uvedomleniya" Type="Self.Uvedomleniya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zayavka">
+              <PropertyRef Name="ID_zayavki" />
+            </Principal>
+            <Dependent Role="Uvedomleniya">
+              <PropertyRef Name="ID_Zayavki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Uvedomlen__Statu__628FA481">
+          <End Role="Type_status" Type="Self.Type_status" Multiplicity="0..1" />
+          <End Role="Uvedomleniya" Type="Self.Uvedomleniya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_status">
+              <PropertyRef Name="Status_uved" />
+            </Principal>
+            <Dependent Role="Uvedomleniya">
+              <PropertyRef Name="Status_uved" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Uvedomlen__Type___619B8048">
+          <End Role="Type_uved" Type="Self.Type_uved" Multiplicity="0..1" />
+          <End Role="Uvedomleniya" Type="Self.Uvedomleniya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_uved">
+              <PropertyRef Name="Type_uvedom" />
+            </Principal>
+            <Dependent Role="Uvedomleniya">
+              <PropertyRef Name="Type_uved" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zayavka__ID_GAR__59063A47">
+          <End Role="GAR" Type="Self.GAR" Multiplicity="0..1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GAR">
+              <PropertyRef Name="ID_GAR" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="ID_GAR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zayavka__Sozdate__59FA5E80">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID_Empl" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="Sozdatel_zayav" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zayavka__Type_za__5812160E">
+          <End Role="Type_zayavki" Type="Self.Type_zayavki" Multiplicity="0..1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_zayavki">
+              <PropertyRef Name="Type_zayavki" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="Type_zayavki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ConcatAdresZayavka" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="ID_adres" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DaysSinceGAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="ID_GAR" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="FullAddressDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_GAR" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FullGARAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="ID_GAR" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Empl" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertNewZayavka" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Type_zayavki" Type="varchar" Mode="In" />
+          <Parameter Name="Uroven" Type="varchar" Mode="In" />
+          <Parameter Name="ID_GAR" Type="int" Mode="In" />
+          <Parameter Name="Sozdatel_zayav" Type="int" Mode="In" />
+          <Parameter Name="Data_sozdaniya" Type="date" Mode="In" />
+          <Parameter Name="Data_sozd2" Type="date" Mode="In" />
+        </Function>
+        <Function Name="LatestDocumentGAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="ID_GAR" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdateUvedStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Uved" Type="int" Mode="In" />
+          <Parameter Name="NewStatus" Type="varchar" Mode="In" />
+          <Parameter Name="NewType_uved" Type="varchar" Mode="In" />
+          <Parameter Name="NewData_ispoln_1" Type="date" Mode="In" />
+          <Parameter Name="Kommentarii" Type="varchar" Mode="In" />
+          <Parameter Name="Prichina_otkaza" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ZayavkaCountEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="ID_Empl" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ZayavkaHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_GAR" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="Хранилище FIAS_PraktikaModelContainer">
+          <EntitySet Name="adres_objects" EntityType="Self.adres_objects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Adres_zayavka" EntityType="Self.Adres_zayavka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dokuments" EntityType="Self.Dokuments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GAR" EntityType="Self.GAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GAR_Dok" EntityType="Self.GAR_Dok" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History_adres" EntityType="Self.History_adres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Istor_izmen" EntityType="Self.Istor_izmen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type_status" EntityType="Self.Type_status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type_uved" EntityType="Self.Type_uved" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type_zayavki" EntityType="Self.Type_zayavki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uvedomleniya" EntityType="Self.Uvedomleniya" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zayavka" EntityType="Self.Zayavka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdresZayavkaProsm" EntityType="Self.AdresZayavkaProsm" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AdresZayavkaProsm].[ID_adres] AS [ID_adres], 
+    [AdresZayavkaProsm].[Parametr] AS [Parametr], 
+    [AdresZayavkaProsm].[Istoriya_znach] AS [Istoriya_znach], 
+    [AdresZayavkaProsm].[Aktual_znach] AS [Aktual_znach], 
+    [AdresZayavkaProsm].[Data_izmen] AS [Data_izmen], 
+    [AdresZayavkaProsm].[Type_izmen] AS [Type_izmen], 
+    [AdresZayavkaProsm].[ID_GAR] AS [ID_GAR], 
+    [AdresZayavkaProsm].[Kadastr_nom] AS [Kadastr_nom], 
+    [AdresZayavkaProsm].[Mun_otdel] AS [Mun_otdel], 
+    [AdresZayavkaProsm].[Administr_otdel] AS [Administr_otdel]
+    FROM [dbo].[AdresZayavkaProsm] AS [AdresZayavkaProsm]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="EmployeeActivity" EntityType="Self.EmployeeActivity" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EmployeeActivity].[ID_Empl] AS [ID_Empl], 
+    [EmployeeActivity].[FIO] AS [FIO], 
+    [EmployeeActivity].[Phone] AS [Phone], 
+    [EmployeeActivity].[Email] AS [Email], 
+    [EmployeeActivity].[TotalApplications] AS [TotalApplications], 
+    [EmployeeActivity].[LastApplicationDate] AS [LastApplicationDate]
+    FROM [dbo].[EmployeeActivity] AS [EmployeeActivity]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FullGAR" EntityType="Self.FullGAR" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FullGAR].[ID_GAR] AS [ID_GAR], 
+    [FullGAR].[Mun_otdel] AS [Mun_otdel], 
+    [FullGAR].[Administr_otdel] AS [Administr_otdel], 
+    [FullGAR].[IFNSL_FL] AS [IFNSL_FL], 
+    [FullGAR].[IFNSL_YL] AS [IFNSL_YL], 
+    [FullGAR].[OKATO] AS [OKATO], 
+    [FullGAR].[OKTMO] AS [OKTMO], 
+    [FullGAR].[Pochta_Index] AS [Pochta_Index], 
+    [FullGAR].[ID_Reestr] AS [ID_Reestr], 
+    [FullGAR].[Kadastr_nom] AS [Kadastr_nom], 
+    [FullGAR].[Status_zap] AS [Status_zap], 
+    [FullGAR].[Data_Vnesenia] AS [Data_Vnesenia], 
+    [FullGAR].[Data_aktual] AS [Data_aktual], 
+    [FullGAR].[FullAddress] AS [FullAddress], 
+    [FullGAR].[Nalog_ID] AS [Nalog_ID], 
+    [FullGAR].[ID_KLADR] AS [ID_KLADR], 
+    [FullGAR].[Period_deistviya] AS [Period_deistviya], 
+    [FullGAR].[Stroka_adres] AS [Stroka_adres], 
+    [FullGAR].[ID_Dok] AS [ID_Dok], 
+    [FullGAR].[Type_Dok] AS [Type_Dok], 
+    [FullGAR].[Date_Dok] AS [Date_Dok], 
+    [FullGAR].[DocumentName] AS [DocumentName]
+    FROM [dbo].[FullGAR] AS [FullGAR]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UvedProsm" EntityType="Self.UvedProsm" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UvedProsm].[ID_Uved] AS [ID_Uved], 
+    [UvedProsm].[ID_Zayavki] AS [ID_Zayavki], 
+    [UvedProsm].[Type_zayavki] AS [Type_zayavki], 
+    [UvedProsm].[Uroven] AS [Uroven], 
+    [UvedProsm].[Type_uved] AS [Type_uved], 
+    [UvedProsm].[Status_uved] AS [Status_uved], 
+    [UvedProsm].[Data_ispoln_1] AS [Data_ispoln_1], 
+    [UvedProsm].[Data_ispoln_2] AS [Data_ispoln_2], 
+    [UvedProsm].[Data_podpis_1] AS [Data_podpis_1], 
+    [UvedProsm].[Data_pospis_2] AS [Data_pospis_2], 
+    [UvedProsm].[Data_ozhid_ispoln] AS [Data_ozhid_ispoln], 
+    [UvedProsm].[Kommentarii] AS [Kommentarii], 
+    [UvedProsm].[Prichina_otkaza] AS [Prichina_otkaza], 
+    [UvedProsm].[CreatorName] AS [CreatorName], 
+    [UvedProsm].[CreatorEmail] AS [CreatorEmail], 
+    [UvedProsm].[Kadastr_nom] AS [Kadastr_nom], 
+    [UvedProsm].[Mun_otdel] AS [Mun_otdel]
+    FROM [dbo].[UvedProsm] AS [UvedProsm]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ZayavkaDetails" EntityType="Self.ZayavkaDetails" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ZayavkaDetails].[ID_zayavki] AS [ID_zayavki], 
+    [ZayavkaDetails].[Type_zayavki] AS [Type_zayavki], 
+    [ZayavkaDetails].[Uroven] AS [Uroven], 
+    [ZayavkaDetails].[Data_sozdaniya] AS [Data_sozdaniya], 
+    [ZayavkaDetails].[Data_sozd2] AS [Data_sozd2], 
+    [ZayavkaDetails].[Kadastr_nom] AS [Kadastr_nom], 
+    [ZayavkaDetails].[Mun_otdel] AS [Mun_otdel], 
+    [ZayavkaDetails].[Administr_otdel] AS [Administr_otdel], 
+    [ZayavkaDetails].[FIO] AS [FIO], 
+    [ZayavkaDetails].[Phone] AS [Phone], 
+    [ZayavkaDetails].[Email] AS [Email], 
+    [ZayavkaDetails].[ChangeCount] AS [ChangeCount], 
+    [ZayavkaDetails].[LatestDocumentType] AS [LatestDocumentType], 
+    [ZayavkaDetails].[LatestDocumentName] AS [LatestDocumentName]
+    FROM [dbo].[ZayavkaDetails] AS [ZayavkaDetails]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__adres_obj__ID_GA__4E88ABD4" Association="Self.FK__adres_obj__ID_GA__4E88ABD4">
+            <End Role="GAR" EntitySet="GAR" />
+            <End Role="adres_objects" EntitySet="adres_objects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GAR_Dok__ID_Dok__49C3F6B7" Association="Self.FK__GAR_Dok__ID_Dok__49C3F6B7">
+            <End Role="Dokuments" EntitySet="Dokuments" />
+            <End Role="GAR_Dok" EntitySet="GAR_Dok" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GAR_Dok__ID_GAR__48CFD27E" Association="Self.FK__GAR_Dok__ID_GAR__48CFD27E">
+            <End Role="GAR" EntitySet="GAR" />
+            <End Role="GAR_Dok" EntitySet="GAR_Dok" />
+          </AssociationSet>
+          <AssociationSet Name="FK__History_a__ID_GA__5165187F" Association="Self.FK__History_a__ID_GA__5165187F">
+            <End Role="GAR" EntitySet="GAR" />
+            <End Role="History_adres" EntitySet="History_adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Istor_izm__ID_ad__70DDC3D8" Association="Self.FK__Istor_izm__ID_ad__70DDC3D8">
+            <End Role="Adres_zayavka" EntitySet="Adres_zayavka" />
+            <End Role="Istor_izmen" EntitySet="Istor_izmen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Istor_izm__ID_GA__6FE99F9F" Association="Self.FK__Istor_izm__ID_GA__6FE99F9F">
+            <End Role="GAR" EntitySet="GAR" />
+            <End Role="Istor_izmen" EntitySet="Istor_izmen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Uvedomlen__ID_Za__60A75C0F" Association="Self.FK__Uvedomlen__ID_Za__60A75C0F">
+            <End Role="Zayavka" EntitySet="Zayavka" />
+            <End Role="Uvedomleniya" EntitySet="Uvedomleniya" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Uvedomlen__Statu__628FA481" Association="Self.FK__Uvedomlen__Statu__628FA481">
+            <End Role="Type_status" EntitySet="Type_status" />
+            <End Role="Uvedomleniya" EntitySet="Uvedomleniya" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Uvedomlen__Type___619B8048" Association="Self.FK__Uvedomlen__Type___619B8048">
+            <End Role="Type_uved" EntitySet="Type_uved" />
+            <End Role="Uvedomleniya" EntitySet="Uvedomleniya" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zayavka__ID_GAR__59063A47" Association="Self.FK__Zayavka__ID_GAR__59063A47">
+            <End Role="GAR" EntitySet="GAR" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zayavka__Sozdate__59FA5E80" Association="Self.FK__Zayavka__Sozdate__59FA5E80">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zayavka__Type_za__5812160E" Association="Self.FK__Zayavka__Type_za__5812160E">
+            <End Role="Type_zayavki" EntitySet="Type_zayavki" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FIAS_PraktikaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="adres_objects">
+          <Key>
+            <PropertyRef Name="ID_GAR" />
+          </Key>
+          <Property Name="ID_GAR" Type="Int32" Nullable="false" />
+          <Property Name="Naimenovanie" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Nalog_ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_KLADR" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GAR" Relationship="Self.FK__adres_obj__ID_GA__4E88ABD4" FromRole="adres_objects" ToRole="GAR" />
+        </EntityType>
+        <EntityType Name="Adres_zayavka">
+          <Key>
+            <PropertyRef Name="ID_adres" />
+          </Key>
+          <Property Name="ID_adres" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Parametr" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Istoriya_znach" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Aktual_znach" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Istor_izmen" Relationship="Self.FK__Istor_izm__ID_ad__70DDC3D8" FromRole="Adres_zayavka" ToRole="Istor_izmen" />
+        </EntityType>
+        <EntityType Name="Dokuments">
+          <Key>
+            <PropertyRef Name="ID_Dok" />
+          </Key>
+          <Property Name="ID_Dok" Type="Int32" Nullable="false" />
+          <Property Name="Type_Dok" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Dok" Type="DateTime" Precision="0" />
+          <Property Name="Naimenovanie" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GAR" Relationship="Self.GAR_Dok" FromRole="Dokuments" ToRole="GAR" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="ID_Empl" />
+          </Key>
+          <Property Name="ID_Empl" Type="Int32" Nullable="false" />
+          <Property Name="FIO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Zayavka" Relationship="Self.FK__Zayavka__Sozdate__59FA5E80" FromRole="Employees" ToRole="Zayavka" />
+        </EntityType>
+        <EntityType Name="GAR">
+          <Key>
+            <PropertyRef Name="ID_GAR" />
+          </Key>
+          <Property Name="ID_GAR" Type="Int32" Nullable="false" />
+          <Property Name="Mun_otdel" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Administr_otdel" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IFNSL_FL" Type="Int32" Nullable="false" />
+          <Property Name="IFNSL_YL" Type="Int32" Nullable="false" />
+          <Property Name="OKATO" Type="Int32" Nullable="false" />
+          <Property Name="OKTMO" Type="Int32" Nullable="false" />
+          <Property Name="Pochta_Index" Type="Int32" Nullable="false" />
+          <Property Name="ID_Reestr" Type="Int32" Nullable="false" />
+          <Property Name="Kadastr_nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status_zap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data_Vnesenia" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data_aktual" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="adres_objects" Relationship="Self.FK__adres_obj__ID_GA__4E88ABD4" FromRole="GAR" ToRole="adres_objects" />
+          <NavigationProperty Name="History_adres" Relationship="Self.FK__History_a__ID_GA__5165187F" FromRole="GAR" ToRole="History_adres" />
+          <NavigationProperty Name="Istor_izmen" Relationship="Self.FK__Istor_izm__ID_GA__6FE99F9F" FromRole="GAR" ToRole="Istor_izmen" />
+          <NavigationProperty Name="Zayavka" Relationship="Self.FK__Zayavka__ID_GAR__59063A47" FromRole="GAR" ToRole="Zayavka" />
+          <NavigationProperty Name="Dokuments" Relationship="Self.GAR_Dok" FromRole="GAR" ToRole="Dokuments" />
+        </EntityType>
+        <EntityType Name="History_adres">
+          <Key>
+            <PropertyRef Name="ID_change" />
+          </Key>
+          <Property Name="ID_change" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_GAR" Type="Int32" />
+          <Property Name="Period_deistviya" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Stroka_adres" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="GAR" Relationship="Self.FK__History_a__ID_GA__5165187F" FromRole="History_adres" ToRole="GAR" />
+        </EntityType>
+        <EntityType Name="Istor_izmen">
+          <Key>
+            <PropertyRef Name="ID_Izm" />
+          </Key>
+          <Property Name="ID_Izm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_GAR" Type="Int32" />
+          <Property Name="Data_izmen" Type="DateTime" Precision="0" />
+          <Property Name="Type_izmen" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ID_adres" Type="Int32" />
+          <NavigationProperty Name="Adres_zayavka" Relationship="Self.FK__Istor_izm__ID_ad__70DDC3D8" FromRole="Istor_izmen" ToRole="Adres_zayavka" />
+          <NavigationProperty Name="GAR" Relationship="Self.FK__Istor_izm__ID_GA__6FE99F9F" FromRole="Istor_izmen" ToRole="GAR" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Type_status">
+          <Key>
+            <PropertyRef Name="Status_uved" />
+          </Key>
+          <Property Name="Status_uved" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Uvedomleniya" Relationship="Self.FK__Uvedomlen__Statu__628FA481" FromRole="Type_status" ToRole="Uvedomleniya" />
+        </EntityType>
+        <EntityType Name="Type_uved">
+          <Key>
+            <PropertyRef Name="Type_uvedom" />
+          </Key>
+          <Property Name="Type_uvedom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Uvedomleniya" Relationship="Self.FK__Uvedomlen__Type___619B8048" FromRole="Type_uved" ToRole="Uvedomleniya" />
+        </EntityType>
+        <EntityType Name="Type_zayavki">
+          <Key>
+            <PropertyRef Name="Type_zayavki1" />
+          </Key>
+          <Property Name="Type_zayavki1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Zayavka" Relationship="Self.FK__Zayavka__Type_za__5812160E" FromRole="Type_zayavki" ToRole="Zayavka" />
+        </EntityType>
+        <EntityType Name="Uvedomleniya">
+          <Key>
+            <PropertyRef Name="ID_Uved" />
+          </Key>
+          <Property Name="ID_Uved" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Zayavki" Type="Int32" />
+          <Property Name="Type_uved" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Status_uved" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Data_ispoln_1" Type="DateTime" Precision="0" />
+          <Property Name="Data_ispoln_2" Type="DateTime" Precision="0" />
+          <Property Name="Data_podpis_1" Type="DateTime" Precision="0" />
+          <Property Name="Data_pospis_2" Type="DateTime" Precision="0" />
+          <Property Name="Data_ozhid_ispoln" Type="DateTime" Precision="0" />
+          <Property Name="Kommentarii" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Prichina_otkaza" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Type_status" Relationship="Self.FK__Uvedomlen__Statu__628FA481" FromRole="Uvedomleniya" ToRole="Type_status" />
+          <NavigationProperty Name="Type_uved1" Relationship="Self.FK__Uvedomlen__Type___619B8048" FromRole="Uvedomleniya" ToRole="Type_uved" />
+          <NavigationProperty Name="Zayavka" Relationship="Self.FK__Uvedomlen__ID_Za__60A75C0F" FromRole="Uvedomleniya" ToRole="Zayavka" />
+        </EntityType>
+        <EntityType Name="Zayavka">
+          <Key>
+            <PropertyRef Name="ID_zayavki" />
+          </Key>
+          <Property Name="ID_zayavki" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type_zayavki" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Uroven" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ID_GAR" Type="Int32" />
+          <Property Name="Sozdatel_zayav" Type="Int32" />
+          <Property Name="Data_sozdaniya" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data_sozd2" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Zayavka__Sozdate__59FA5E80" FromRole="Zayavka" ToRole="Employees" />
+          <NavigationProperty Name="GAR" Relationship="Self.FK__Zayavka__ID_GAR__59063A47" FromRole="Zayavka" ToRole="GAR" />
+          <NavigationProperty Name="Type_zayavki1" Relationship="Self.FK__Zayavka__Type_za__5812160E" FromRole="Zayavka" ToRole="Type_zayavki" />
+          <NavigationProperty Name="Uvedomleniya" Relationship="Self.FK__Uvedomlen__ID_Za__60A75C0F" FromRole="Zayavka" ToRole="Uvedomleniya" />
+        </EntityType>
+        <EntityType Name="AdresZayavkaProsm">
+          <Key>
+            <PropertyRef Name="ID_adres" />
+            <PropertyRef Name="Parametr" />
+            <PropertyRef Name="Aktual_znach" />
+          </Key>
+          <Property Name="ID_adres" Type="Int32" Nullable="false" />
+          <Property Name="Parametr" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Istoriya_znach" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Aktual_znach" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Data_izmen" Type="DateTime" Precision="0" />
+          <Property Name="Type_izmen" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ID_GAR" Type="Int32" />
+          <Property Name="Kadastr_nom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Mun_otdel" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Administr_otdel" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EmployeeActivity">
+          <Key>
+            <PropertyRef Name="ID_Empl" />
+            <PropertyRef Name="FIO" />
+            <PropertyRef Name="Phone" />
+          </Key>
+          <Property Name="ID_Empl" Type="Int32" Nullable="false" />
+          <Property Name="FIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TotalApplications" Type="Int32" />
+          <Property Name="LastApplicationDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="FullGAR">
+          <Key>
+            <PropertyRef Name="ID_GAR" />
+            <PropertyRef Name="Mun_otdel" />
+            <PropertyRef Name="Administr_otdel" />
+            <PropertyRef Name="IFNSL_FL" />
+            <PropertyRef Name="IFNSL_YL" />
+            <PropertyRef Name="OKATO" />
+            <PropertyRef Name="OKTMO" />
+            <PropertyRef Name="Pochta_Index" />
+            <PropertyRef Name="ID_Reestr" />
+            <PropertyRef Name="Kadastr_nom" />
+            <PropertyRef Name="Status_zap" />
+            <PropertyRef Name="Data_Vnesenia" />
+            <PropertyRef Name="Data_aktual" />
+          </Key>
+          <Property Name="ID_GAR" Type="Int32" Nullable="false" />
+          <Property Name="Mun_otdel" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Administr_otdel" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IFNSL_FL" Type="Int32" Nullable="false" />
+          <Property Name="IFNSL_YL" Type="Int32" Nullable="false" />
+          <Property Name="OKATO" Type="Int32" Nullable="false" />
+          <Property Name="OKTMO" Type="Int32" Nullable="false" />
+          <Property Name="Pochta_Index" Type="Int32" Nullable="false" />
+          <Property Name="ID_Reestr" Type="Int32" Nullable="false" />
+          <Property Name="Kadastr_nom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status_zap" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Data_Vnesenia" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data_aktual" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FullAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Nalog_ID" Type="Int32" />
+          <Property Name="ID_KLADR" Type="Int32" />
+          <Property Name="Period_deistviya" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Stroka_adres" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Dok" Type="Int32" />
+          <Property Name="Type_Dok" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Date_Dok" Type="DateTime" Precision="0" />
+          <Property Name="DocumentName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UvedProsm">
+          <Key>
+            <PropertyRef Name="ID_Uved" />
+          </Key>
+          <Property Name="ID_Uved" Type="Int32" Nullable="false" />
+          <Property Name="ID_Zayavki" Type="Int32" />
+          <Property Name="Type_zayavki" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Uroven" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Type_uved" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status_uved" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Data_ispoln_1" Type="DateTime" Precision="0" />
+          <Property Name="Data_ispoln_2" Type="DateTime" Precision="0" />
+          <Property Name="Data_podpis_1" Type="DateTime" Precision="0" />
+          <Property Name="Data_pospis_2" Type="DateTime" Precision="0" />
+          <Property Name="Data_ozhid_ispoln" Type="DateTime" Precision="0" />
+          <Property Name="Kommentarii" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Prichina_otkaza" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CreatorName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatorEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Kadastr_nom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Mun_otdel" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ZayavkaDetails">
+          <Key>
+            <PropertyRef Name="ID_zayavki" />
+            <PropertyRef Name="Data_sozdaniya" />
+            <PropertyRef Name="Data_sozd2" />
+          </Key>
+          <Property Name="ID_zayavki" Type="Int32" Nullable="false" />
+          <Property Name="Type_zayavki" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Uroven" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Data_sozdaniya" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data_sozd2" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Kadastr_nom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Mun_otdel" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Administr_otdel" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ChangeCount" Type="Int32" />
+          <Property Name="LatestDocumentType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LatestDocumentName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__adres_obj__ID_GA__4E88ABD4">
+          <End Role="GAR" Type="Self.GAR" Multiplicity="1" />
+          <End Role="adres_objects" Type="Self.adres_objects" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="GAR">
+              <PropertyRef Name="ID_GAR" />
+            </Principal>
+            <Dependent Role="adres_objects">
+              <PropertyRef Name="ID_GAR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Istor_izm__ID_ad__70DDC3D8">
+          <End Role="Adres_zayavka" Type="Self.Adres_zayavka" Multiplicity="0..1" />
+          <End Role="Istor_izmen" Type="Self.Istor_izmen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres_zayavka">
+              <PropertyRef Name="ID_adres" />
+            </Principal>
+            <Dependent Role="Istor_izmen">
+              <PropertyRef Name="ID_adres" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zayavka__Sozdate__59FA5E80">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID_Empl" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="Sozdatel_zayav" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__History_a__ID_GA__5165187F">
+          <End Role="GAR" Type="Self.GAR" Multiplicity="0..1" />
+          <End Role="History_adres" Type="Self.History_adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GAR">
+              <PropertyRef Name="ID_GAR" />
+            </Principal>
+            <Dependent Role="History_adres">
+              <PropertyRef Name="ID_GAR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Istor_izm__ID_GA__6FE99F9F">
+          <End Role="GAR" Type="Self.GAR" Multiplicity="0..1" />
+          <End Role="Istor_izmen" Type="Self.Istor_izmen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GAR">
+              <PropertyRef Name="ID_GAR" />
+            </Principal>
+            <Dependent Role="Istor_izmen">
+              <PropertyRef Name="ID_GAR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zayavka__ID_GAR__59063A47">
+          <End Role="GAR" Type="Self.GAR" Multiplicity="0..1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GAR">
+              <PropertyRef Name="ID_GAR" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="ID_GAR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Uvedomlen__Statu__628FA481">
+          <End Role="Type_status" Type="Self.Type_status" Multiplicity="0..1" />
+          <End Role="Uvedomleniya" Type="Self.Uvedomleniya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_status">
+              <PropertyRef Name="Status_uved" />
+            </Principal>
+            <Dependent Role="Uvedomleniya">
+              <PropertyRef Name="Status_uved" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Uvedomlen__Type___619B8048">
+          <End Role="Type_uved" Type="Self.Type_uved" Multiplicity="0..1" />
+          <End Role="Uvedomleniya" Type="Self.Uvedomleniya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_uved">
+              <PropertyRef Name="Type_uvedom" />
+            </Principal>
+            <Dependent Role="Uvedomleniya">
+              <PropertyRef Name="Type_uved" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zayavka__Type_za__5812160E">
+          <End Role="Type_zayavki" Type="Self.Type_zayavki" Multiplicity="0..1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_zayavki">
+              <PropertyRef Name="Type_zayavki1" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="Type_zayavki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Uvedomlen__ID_Za__60A75C0F">
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="0..1" />
+          <End Role="Uvedomleniya" Type="Self.Uvedomleniya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zayavka">
+              <PropertyRef Name="ID_zayavki" />
+            </Principal>
+            <Dependent Role="Uvedomleniya">
+              <PropertyRef Name="ID_Zayavki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GAR_Dok">
+          <End Role="Dokuments" Type="Self.Dokuments" Multiplicity="*" />
+          <End Role="GAR" Type="Self.GAR" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="FIAS_PraktikaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="adres_objects" EntityType="Self.adres_objects" />
+          <EntitySet Name="Adres_zayavka" EntityType="Self.Adres_zayavka" />
+          <EntitySet Name="Dokuments" EntityType="Self.Dokuments" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" />
+          <EntitySet Name="GAR" EntityType="Self.GAR" />
+          <EntitySet Name="History_adres" EntityType="Self.History_adres" />
+          <EntitySet Name="Istor_izmen" EntityType="Self.Istor_izmen" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Type_status" EntityType="Self.Type_status" />
+          <EntitySet Name="Type_uved" EntityType="Self.Type_uved" />
+          <EntitySet Name="Type_zayavki" EntityType="Self.Type_zayavki" />
+          <EntitySet Name="Uvedomleniya" EntityType="Self.Uvedomleniya" />
+          <EntitySet Name="Zayavka" EntityType="Self.Zayavka" />
+          <EntitySet Name="AdresZayavkaProsm" EntityType="Self.AdresZayavkaProsm" />
+          <EntitySet Name="EmployeeActivity" EntityType="Self.EmployeeActivity" />
+          <EntitySet Name="FullGAR" EntityType="Self.FullGAR" />
+          <EntitySet Name="UvedProsm" EntityType="Self.UvedProsm" />
+          <EntitySet Name="ZayavkaDetails" EntityType="Self.ZayavkaDetails" />
+          <AssociationSet Name="FK__adres_obj__ID_GA__4E88ABD4" Association="Self.FK__adres_obj__ID_GA__4E88ABD4">
+            <End Role="GAR" EntitySet="GAR" />
+            <End Role="adres_objects" EntitySet="adres_objects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Istor_izm__ID_ad__70DDC3D8" Association="Self.FK__Istor_izm__ID_ad__70DDC3D8">
+            <End Role="Adres_zayavka" EntitySet="Adres_zayavka" />
+            <End Role="Istor_izmen" EntitySet="Istor_izmen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zayavka__Sozdate__59FA5E80" Association="Self.FK__Zayavka__Sozdate__59FA5E80">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK__History_a__ID_GA__5165187F" Association="Self.FK__History_a__ID_GA__5165187F">
+            <End Role="GAR" EntitySet="GAR" />
+            <End Role="History_adres" EntitySet="History_adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Istor_izm__ID_GA__6FE99F9F" Association="Self.FK__Istor_izm__ID_GA__6FE99F9F">
+            <End Role="GAR" EntitySet="GAR" />
+            <End Role="Istor_izmen" EntitySet="Istor_izmen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zayavka__ID_GAR__59063A47" Association="Self.FK__Zayavka__ID_GAR__59063A47">
+            <End Role="GAR" EntitySet="GAR" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Uvedomlen__Statu__628FA481" Association="Self.FK__Uvedomlen__Statu__628FA481">
+            <End Role="Type_status" EntitySet="Type_status" />
+            <End Role="Uvedomleniya" EntitySet="Uvedomleniya" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Uvedomlen__Type___619B8048" Association="Self.FK__Uvedomlen__Type___619B8048">
+            <End Role="Type_uved" EntitySet="Type_uved" />
+            <End Role="Uvedomleniya" EntitySet="Uvedomleniya" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zayavka__Type_za__5812160E" Association="Self.FK__Zayavka__Type_za__5812160E">
+            <End Role="Type_zayavki" EntitySet="Type_zayavki" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Uvedomlen__ID_Za__60A75C0F" Association="Self.FK__Uvedomlen__ID_Za__60A75C0F">
+            <End Role="Zayavka" EntitySet="Zayavka" />
+            <End Role="Uvedomleniya" EntitySet="Uvedomleniya" />
+          </AssociationSet>
+          <AssociationSet Name="GAR_Dok" Association="Self.GAR_Dok">
+            <End Role="Dokuments" EntitySet="Dokuments" />
+            <End Role="GAR" EntitySet="GAR" />
+          </AssociationSet>
+          <FunctionImport Name="FullAddressDetails" ReturnType="Collection(FIAS_PraktikaModel.FullAddressDetails_Result)">
+          <Parameter Name="ID_GAR" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetEmployee" ReturnType="Collection(FIAS_PraktikaModel.GetEmployee_Result)">
+          <Parameter Name="ID_Empl" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertNewZayavka" ReturnType="Collection(Decimal)">
+            <Parameter Name="Type_zayavki" Mode="In" Type="String" />
+            <Parameter Name="Uroven" Mode="In" Type="String" />
+            <Parameter Name="ID_GAR" Mode="In" Type="Int32" />
+            <Parameter Name="Sozdatel_zayav" Mode="In" Type="Int32" />
+            <Parameter Name="Data_sozdaniya" Mode="In" Type="DateTime" />
+            <Parameter Name="Data_sozd2" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(FIAS_PraktikaModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(FIAS_PraktikaModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="UpdateUvedStatus" ReturnType="Collection(FIAS_PraktikaModel.UpdateUvedStatus_Result)">
+            <Parameter Name="ID_Uved" Mode="In" Type="Int32" />
+            <Parameter Name="NewStatus" Mode="In" Type="String" />
+            <Parameter Name="NewType_uved" Mode="In" Type="String" />
+            <Parameter Name="NewData_ispoln_1" Mode="In" Type="DateTime" />
+            <Parameter Name="Kommentarii" Mode="In" Type="String" />
+            <Parameter Name="Prichina_otkaza" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ZayavkaHistory" ReturnType="Collection(FIAS_PraktikaModel.ZayavkaHistory_Result)">
+          <Parameter Name="ID_GAR" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="FullAddressDetails_Result">
+          <Property Type="Int32" Name="ID_GAR" Nullable="false" />
+          <Property Type="String" Name="Mun_otdel" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Administr_otdel" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="IFNSL_FL" Nullable="false" />
+          <Property Type="Int32" Name="IFNSL_YL" Nullable="false" />
+          <Property Type="Int32" Name="OKATO" Nullable="false" />
+          <Property Type="Int32" Name="OKTMO" Nullable="false" />
+          <Property Type="Int32" Name="Pochta_Index" Nullable="false" />
+          <Property Type="Int32" Name="ID_Reestr" Nullable="false" />
+          <Property Type="String" Name="Kadastr_nom" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Status_zap" Nullable="false" MaxLength="25" />
+          <Property Type="DateTime" Name="Data_Vnesenia" Nullable="false" />
+          <Property Type="DateTime" Name="Data_aktual" Nullable="false" />
+          <Property Type="String" Name="FullAddress" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Period_deistviya" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Stroka_adres" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="ID_Dok" Nullable="true" />
+          <Property Type="String" Name="Type_Dok" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Date_Dok" Nullable="true" />
+          <Property Type="String" Name="DocumentName" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="GetEmployee_Result">
+          <Property Type="Int32" Name="ID_zayavki" Nullable="false" />
+          <Property Type="String" Name="Type_zayavki" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Uroven" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="ID_GAR" Nullable="true" />
+          <Property Type="Int32" Name="Sozdatel_zayav" Nullable="true" />
+          <Property Type="DateTime" Name="Data_sozdaniya" Nullable="false" />
+          <Property Type="DateTime" Name="Data_sozd2" Nullable="false" />
+          <Property Type="String" Name="Kadastr_nom" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Mun_otdel" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Administr_otdel" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="FIO" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="12" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="UpdateUvedStatus_Result">
+          <Property Type="Int32" Name="ID_Uved" Nullable="false" />
+          <Property Type="Int32" Name="ID_Zayavki" Nullable="true" />
+          <Property Type="String" Name="Type_uved" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Status_uved" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Data_ispoln_1" Nullable="true" />
+          <Property Type="DateTime" Name="Data_ispoln_2" Nullable="true" />
+          <Property Type="DateTime" Name="Data_podpis_1" Nullable="true" />
+          <Property Type="DateTime" Name="Data_pospis_2" Nullable="true" />
+          <Property Type="DateTime" Name="Data_ozhid_ispoln" Nullable="true" />
+          <Property Type="String" Name="Kommentarii" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Prichina_otkaza" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="ZayavkaHistory_Result">
+          <Property Type="Int32" Name="ID_Izm" Nullable="false" />
+          <Property Type="Int32" Name="ID_GAR" Nullable="true" />
+          <Property Type="DateTime" Name="Data_izmen" Nullable="true" />
+          <Property Type="String" Name="Type_izmen" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="ID_adres" Nullable="true" />
+          <Property Type="String" Name="Parametr" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Istoriya_znach" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Aktual_znach" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище FIAS_PraktikaModelContainer" CdmEntityContainer="FIAS_PraktikaEntities">
+          <EntitySetMapping Name="adres_objects">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.adres_objects">
+              <MappingFragment StoreEntitySet="adres_objects">
+                <ScalarProperty Name="ID_GAR" ColumnName="ID_GAR" />
+                <ScalarProperty Name="Naimenovanie" ColumnName="Naimenovanie" />
+                <ScalarProperty Name="Nalog_ID" ColumnName="Nalog_ID" />
+                <ScalarProperty Name="ID_KLADR" ColumnName="ID_KLADR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adres_zayavka">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.Adres_zayavka">
+              <MappingFragment StoreEntitySet="Adres_zayavka">
+                <ScalarProperty Name="ID_adres" ColumnName="ID_adres" />
+                <ScalarProperty Name="Parametr" ColumnName="Parametr" />
+                <ScalarProperty Name="Istoriya_znach" ColumnName="Istoriya_znach" />
+                <ScalarProperty Name="Aktual_znach" ColumnName="Aktual_znach" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dokuments">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.Dokuments">
+              <MappingFragment StoreEntitySet="Dokuments">
+                <ScalarProperty Name="ID_Dok" ColumnName="ID_Dok" />
+                <ScalarProperty Name="Type_Dok" ColumnName="Type_Dok" />
+                <ScalarProperty Name="Date_Dok" ColumnName="Date_Dok" />
+                <ScalarProperty Name="Naimenovanie" ColumnName="Naimenovanie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="ID_Empl" ColumnName="ID_Empl" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GAR">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.GAR">
+              <MappingFragment StoreEntitySet="GAR">
+                <ScalarProperty Name="ID_GAR" ColumnName="ID_GAR" />
+                <ScalarProperty Name="Mun_otdel" ColumnName="Mun_otdel" />
+                <ScalarProperty Name="Administr_otdel" ColumnName="Administr_otdel" />
+                <ScalarProperty Name="IFNSL_FL" ColumnName="IFNSL_FL" />
+                <ScalarProperty Name="IFNSL_YL" ColumnName="IFNSL_YL" />
+                <ScalarProperty Name="OKATO" ColumnName="OKATO" />
+                <ScalarProperty Name="OKTMO" ColumnName="OKTMO" />
+                <ScalarProperty Name="Pochta_Index" ColumnName="Pochta_Index" />
+                <ScalarProperty Name="ID_Reestr" ColumnName="ID_Reestr" />
+                <ScalarProperty Name="Kadastr_nom" ColumnName="Kadastr_nom" />
+                <ScalarProperty Name="Status_zap" ColumnName="Status_zap" />
+                <ScalarProperty Name="Data_Vnesenia" ColumnName="Data_Vnesenia" />
+                <ScalarProperty Name="Data_aktual" ColumnName="Data_aktual" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="History_adres">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.History_adres">
+              <MappingFragment StoreEntitySet="History_adres">
+                <ScalarProperty Name="ID_change" ColumnName="ID_change" />
+                <ScalarProperty Name="ID_GAR" ColumnName="ID_GAR" />
+                <ScalarProperty Name="Period_deistviya" ColumnName="Period_deistviya" />
+                <ScalarProperty Name="Stroka_adres" ColumnName="Stroka_adres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Istor_izmen">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.Istor_izmen">
+              <MappingFragment StoreEntitySet="Istor_izmen">
+                <ScalarProperty Name="ID_Izm" ColumnName="ID_Izm" />
+                <ScalarProperty Name="ID_GAR" ColumnName="ID_GAR" />
+                <ScalarProperty Name="Data_izmen" ColumnName="Data_izmen" />
+                <ScalarProperty Name="Type_izmen" ColumnName="Type_izmen" />
+                <ScalarProperty Name="ID_adres" ColumnName="ID_adres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type_status">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.Type_status">
+              <MappingFragment StoreEntitySet="Type_status">
+                <ScalarProperty Name="Status_uved" ColumnName="Status_uved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type_uved">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.Type_uved">
+              <MappingFragment StoreEntitySet="Type_uved">
+                <ScalarProperty Name="Type_uvedom" ColumnName="Type_uvedom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type_zayavki">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.Type_zayavki">
+              <MappingFragment StoreEntitySet="Type_zayavki">
+                <ScalarProperty Name="Type_zayavki1" ColumnName="Type_zayavki" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uvedomleniya">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.Uvedomleniya">
+              <MappingFragment StoreEntitySet="Uvedomleniya">
+                <ScalarProperty Name="ID_Uved" ColumnName="ID_Uved" />
+                <ScalarProperty Name="ID_Zayavki" ColumnName="ID_Zayavki" />
+                <ScalarProperty Name="Type_uved" ColumnName="Type_uved" />
+                <ScalarProperty Name="Status_uved" ColumnName="Status_uved" />
+                <ScalarProperty Name="Data_ispoln_1" ColumnName="Data_ispoln_1" />
+                <ScalarProperty Name="Data_ispoln_2" ColumnName="Data_ispoln_2" />
+                <ScalarProperty Name="Data_podpis_1" ColumnName="Data_podpis_1" />
+                <ScalarProperty Name="Data_pospis_2" ColumnName="Data_pospis_2" />
+                <ScalarProperty Name="Data_ozhid_ispoln" ColumnName="Data_ozhid_ispoln" />
+                <ScalarProperty Name="Kommentarii" ColumnName="Kommentarii" />
+                <ScalarProperty Name="Prichina_otkaza" ColumnName="Prichina_otkaza" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zayavka">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.Zayavka">
+              <MappingFragment StoreEntitySet="Zayavka">
+                <ScalarProperty Name="ID_zayavki" ColumnName="ID_zayavki" />
+                <ScalarProperty Name="Type_zayavki" ColumnName="Type_zayavki" />
+                <ScalarProperty Name="Uroven" ColumnName="Uroven" />
+                <ScalarProperty Name="ID_GAR" ColumnName="ID_GAR" />
+                <ScalarProperty Name="Sozdatel_zayav" ColumnName="Sozdatel_zayav" />
+                <ScalarProperty Name="Data_sozdaniya" ColumnName="Data_sozdaniya" />
+                <ScalarProperty Name="Data_sozd2" ColumnName="Data_sozd2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdresZayavkaProsm">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.AdresZayavkaProsm">
+              <MappingFragment StoreEntitySet="AdresZayavkaProsm">
+                <ScalarProperty Name="ID_adres" ColumnName="ID_adres" />
+                <ScalarProperty Name="Parametr" ColumnName="Parametr" />
+                <ScalarProperty Name="Istoriya_znach" ColumnName="Istoriya_znach" />
+                <ScalarProperty Name="Aktual_znach" ColumnName="Aktual_znach" />
+                <ScalarProperty Name="Data_izmen" ColumnName="Data_izmen" />
+                <ScalarProperty Name="Type_izmen" ColumnName="Type_izmen" />
+                <ScalarProperty Name="ID_GAR" ColumnName="ID_GAR" />
+                <ScalarProperty Name="Kadastr_nom" ColumnName="Kadastr_nom" />
+                <ScalarProperty Name="Mun_otdel" ColumnName="Mun_otdel" />
+                <ScalarProperty Name="Administr_otdel" ColumnName="Administr_otdel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeActivity">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.EmployeeActivity">
+              <MappingFragment StoreEntitySet="EmployeeActivity">
+                <ScalarProperty Name="ID_Empl" ColumnName="ID_Empl" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TotalApplications" ColumnName="TotalApplications" />
+                <ScalarProperty Name="LastApplicationDate" ColumnName="LastApplicationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FullGAR">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.FullGAR">
+              <MappingFragment StoreEntitySet="FullGAR">
+                <ScalarProperty Name="ID_GAR" ColumnName="ID_GAR" />
+                <ScalarProperty Name="Mun_otdel" ColumnName="Mun_otdel" />
+                <ScalarProperty Name="Administr_otdel" ColumnName="Administr_otdel" />
+                <ScalarProperty Name="IFNSL_FL" ColumnName="IFNSL_FL" />
+                <ScalarProperty Name="IFNSL_YL" ColumnName="IFNSL_YL" />
+                <ScalarProperty Name="OKATO" ColumnName="OKATO" />
+                <ScalarProperty Name="OKTMO" ColumnName="OKTMO" />
+                <ScalarProperty Name="Pochta_Index" ColumnName="Pochta_Index" />
+                <ScalarProperty Name="ID_Reestr" ColumnName="ID_Reestr" />
+                <ScalarProperty Name="Kadastr_nom" ColumnName="Kadastr_nom" />
+                <ScalarProperty Name="Status_zap" ColumnName="Status_zap" />
+                <ScalarProperty Name="Data_Vnesenia" ColumnName="Data_Vnesenia" />
+                <ScalarProperty Name="Data_aktual" ColumnName="Data_aktual" />
+                <ScalarProperty Name="FullAddress" ColumnName="FullAddress" />
+                <ScalarProperty Name="Nalog_ID" ColumnName="Nalog_ID" />
+                <ScalarProperty Name="ID_KLADR" ColumnName="ID_KLADR" />
+                <ScalarProperty Name="Period_deistviya" ColumnName="Period_deistviya" />
+                <ScalarProperty Name="Stroka_adres" ColumnName="Stroka_adres" />
+                <ScalarProperty Name="ID_Dok" ColumnName="ID_Dok" />
+                <ScalarProperty Name="Type_Dok" ColumnName="Type_Dok" />
+                <ScalarProperty Name="Date_Dok" ColumnName="Date_Dok" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UvedProsm">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.UvedProsm">
+              <MappingFragment StoreEntitySet="UvedProsm">
+                <ScalarProperty Name="ID_Uved" ColumnName="ID_Uved" />
+                <ScalarProperty Name="ID_Zayavki" ColumnName="ID_Zayavki" />
+                <ScalarProperty Name="Type_zayavki" ColumnName="Type_zayavki" />
+                <ScalarProperty Name="Uroven" ColumnName="Uroven" />
+                <ScalarProperty Name="Type_uved" ColumnName="Type_uved" />
+                <ScalarProperty Name="Status_uved" ColumnName="Status_uved" />
+                <ScalarProperty Name="Data_ispoln_1" ColumnName="Data_ispoln_1" />
+                <ScalarProperty Name="Data_ispoln_2" ColumnName="Data_ispoln_2" />
+                <ScalarProperty Name="Data_podpis_1" ColumnName="Data_podpis_1" />
+                <ScalarProperty Name="Data_pospis_2" ColumnName="Data_pospis_2" />
+                <ScalarProperty Name="Data_ozhid_ispoln" ColumnName="Data_ozhid_ispoln" />
+                <ScalarProperty Name="Kommentarii" ColumnName="Kommentarii" />
+                <ScalarProperty Name="Prichina_otkaza" ColumnName="Prichina_otkaza" />
+                <ScalarProperty Name="CreatorName" ColumnName="CreatorName" />
+                <ScalarProperty Name="CreatorEmail" ColumnName="CreatorEmail" />
+                <ScalarProperty Name="Kadastr_nom" ColumnName="Kadastr_nom" />
+                <ScalarProperty Name="Mun_otdel" ColumnName="Mun_otdel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZayavkaDetails">
+            <EntityTypeMapping TypeName="FIAS_PraktikaModel.ZayavkaDetails">
+              <MappingFragment StoreEntitySet="ZayavkaDetails">
+                <ScalarProperty Name="ID_zayavki" ColumnName="ID_zayavki" />
+                <ScalarProperty Name="Type_zayavki" ColumnName="Type_zayavki" />
+                <ScalarProperty Name="Uroven" ColumnName="Uroven" />
+                <ScalarProperty Name="Data_sozdaniya" ColumnName="Data_sozdaniya" />
+                <ScalarProperty Name="Data_sozd2" ColumnName="Data_sozd2" />
+                <ScalarProperty Name="Kadastr_nom" ColumnName="Kadastr_nom" />
+                <ScalarProperty Name="Mun_otdel" ColumnName="Mun_otdel" />
+                <ScalarProperty Name="Administr_otdel" ColumnName="Administr_otdel" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ChangeCount" ColumnName="ChangeCount" />
+                <ScalarProperty Name="LatestDocumentType" ColumnName="LatestDocumentType" />
+                <ScalarProperty Name="LatestDocumentName" ColumnName="LatestDocumentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="GAR_Dok" TypeName="FIAS_PraktikaModel.GAR_Dok" StoreEntitySet="GAR_Dok">
+            <EndProperty Name="Dokuments">
+              <ScalarProperty Name="ID_Dok" ColumnName="ID_Dok" />
+            </EndProperty>
+            <EndProperty Name="GAR">
+              <ScalarProperty Name="ID_GAR" ColumnName="ID_GAR" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="FullAddressDetails" FunctionName="Хранилище FIAS_PraktikaModel.FullAddressDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FIAS_PraktikaModel.FullAddressDetails_Result">
+                <ScalarProperty Name="ID_GAR" ColumnName="ID_GAR" />
+                <ScalarProperty Name="Mun_otdel" ColumnName="Mun_otdel" />
+                <ScalarProperty Name="Administr_otdel" ColumnName="Administr_otdel" />
+                <ScalarProperty Name="IFNSL_FL" ColumnName="IFNSL_FL" />
+                <ScalarProperty Name="IFNSL_YL" ColumnName="IFNSL_YL" />
+                <ScalarProperty Name="OKATO" ColumnName="OKATO" />
+                <ScalarProperty Name="OKTMO" ColumnName="OKTMO" />
+                <ScalarProperty Name="Pochta_Index" ColumnName="Pochta_Index" />
+                <ScalarProperty Name="ID_Reestr" ColumnName="ID_Reestr" />
+                <ScalarProperty Name="Kadastr_nom" ColumnName="Kadastr_nom" />
+                <ScalarProperty Name="Status_zap" ColumnName="Status_zap" />
+                <ScalarProperty Name="Data_Vnesenia" ColumnName="Data_Vnesenia" />
+                <ScalarProperty Name="Data_aktual" ColumnName="Data_aktual" />
+                <ScalarProperty Name="FullAddress" ColumnName="FullAddress" />
+                <ScalarProperty Name="Period_deistviya" ColumnName="Period_deistviya" />
+                <ScalarProperty Name="Stroka_adres" ColumnName="Stroka_adres" />
+                <ScalarProperty Name="ID_Dok" ColumnName="ID_Dok" />
+                <ScalarProperty Name="Type_Dok" ColumnName="Type_Dok" />
+                <ScalarProperty Name="Date_Dok" ColumnName="Date_Dok" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEmployee" FunctionName="Хранилище FIAS_PraktikaModel.GetEmployee">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FIAS_PraktikaModel.GetEmployee_Result">
+                <ScalarProperty Name="ID_zayavki" ColumnName="ID_zayavki" />
+                <ScalarProperty Name="Type_zayavki" ColumnName="Type_zayavki" />
+                <ScalarProperty Name="Uroven" ColumnName="Uroven" />
+                <ScalarProperty Name="ID_GAR" ColumnName="ID_GAR" />
+                <ScalarProperty Name="Sozdatel_zayav" ColumnName="Sozdatel_zayav" />
+                <ScalarProperty Name="Data_sozdaniya" ColumnName="Data_sozdaniya" />
+                <ScalarProperty Name="Data_sozd2" ColumnName="Data_sozd2" />
+                <ScalarProperty Name="Kadastr_nom" ColumnName="Kadastr_nom" />
+                <ScalarProperty Name="Mun_otdel" ColumnName="Mun_otdel" />
+                <ScalarProperty Name="Administr_otdel" ColumnName="Administr_otdel" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertNewZayavka" FunctionName="Хранилище FIAS_PraktikaModel.InsertNewZayavka" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище FIAS_PraktikaModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище FIAS_PraktikaModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище FIAS_PraktikaModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище FIAS_PraktikaModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FIAS_PraktikaModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище FIAS_PraktikaModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FIAS_PraktikaModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище FIAS_PraktikaModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище FIAS_PraktikaModel.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="UpdateUvedStatus" FunctionName="Хранилище FIAS_PraktikaModel.UpdateUvedStatus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FIAS_PraktikaModel.UpdateUvedStatus_Result">
+                <ScalarProperty Name="ID_Uved" ColumnName="ID_Uved" />
+                <ScalarProperty Name="ID_Zayavki" ColumnName="ID_Zayavki" />
+                <ScalarProperty Name="Type_uved" ColumnName="Type_uved" />
+                <ScalarProperty Name="Status_uved" ColumnName="Status_uved" />
+                <ScalarProperty Name="Data_ispoln_1" ColumnName="Data_ispoln_1" />
+                <ScalarProperty Name="Data_ispoln_2" ColumnName="Data_ispoln_2" />
+                <ScalarProperty Name="Data_podpis_1" ColumnName="Data_podpis_1" />
+                <ScalarProperty Name="Data_pospis_2" ColumnName="Data_pospis_2" />
+                <ScalarProperty Name="Data_ozhid_ispoln" ColumnName="Data_ozhid_ispoln" />
+                <ScalarProperty Name="Kommentarii" ColumnName="Kommentarii" />
+                <ScalarProperty Name="Prichina_otkaza" ColumnName="Prichina_otkaza" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ZayavkaHistory" FunctionName="Хранилище FIAS_PraktikaModel.ZayavkaHistory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FIAS_PraktikaModel.ZayavkaHistory_Result">
+                <ScalarProperty Name="ID_Izm" ColumnName="ID_Izm" />
+                <ScalarProperty Name="ID_GAR" ColumnName="ID_GAR" />
+                <ScalarProperty Name="Data_izmen" ColumnName="Data_izmen" />
+                <ScalarProperty Name="Type_izmen" ColumnName="Type_izmen" />
+                <ScalarProperty Name="ID_adres" ColumnName="ID_adres" />
+                <ScalarProperty Name="Parametr" ColumnName="Parametr" />
+                <ScalarProperty Name="Istoriya_znach" ColumnName="Istoriya_znach" />
+                <ScalarProperty Name="Aktual_znach" ColumnName="Aktual_znach" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
