@@ -22,11 +22,11 @@ namespace FIAS_Murt.Uvedoml
                 currentUved = db.Uvedomleniya.Find(uved.ID_Uved);
                 if (currentUved != null)
                 {
-                    txtIDZayavki.Text = currentUved.ID_Zayavki?.ToString();
-                    txtTypeUved.Text = currentUved.Type_uved;
-                    txtStatusUved.Text = currentUved.Status_uved;
-                    dpDataIspoln.SelectedDate = currentUved.Data_ispoln_1;
-                    txtKommentarii.Text = currentUved.Kommentarii;
+                    tbID_Zayavki.Text = currentUved.ID_Zayavki?.ToString();
+                    tbType_Uved.Text = currentUved.Type_uved;
+                    tbStatus_Uved.Text = currentUved.Status_uved;
+                    dpData_Ispoln.SelectedDate = currentUved.Data_ispoln_1;
+                    tbKommentarii.Text = currentUved.Kommentarii;
                 }
             }
             else
@@ -39,11 +39,11 @@ namespace FIAS_Murt.Uvedoml
         {
             try
             {
-                currentUved.ID_Zayavki = int.TryParse(txtIDZayavki.Text, out int idZ) ? idZ : (int?)null;
-                currentUved.Type_uved = txtTypeUved.Text;
-                currentUved.Status_uved = txtStatusUved.Text;
-                currentUved.Data_ispoln_1 = dpDataIspoln.SelectedDate;
-                currentUved.Kommentarii = txtKommentarii.Text;
+                currentUved.ID_Zayavki = int.TryParse(tbID_Zayavki.Text, out int idZ) ? idZ : (int?)null;
+                currentUved.Type_uved = tbType_Uved.Text;
+                currentUved.Status_uved = tbStatus_Uved.Text;
+                currentUved.Data_ispoln_1 = dpData_Ispoln.SelectedDate;
+                currentUved.Kommentarii = tbKommentarii.Text;
 
                 if (currentUved.ID_Uved == 0)
                 {

@@ -173,7 +173,7 @@ namespace FIAS_Murt
                     db.GAR.Add(Gar);
                 }
                 db.SaveChanges();
-                mainFrame.Navigate(new GARPage(mainFrame));
+                NavigationService.GoBack();
             }
             catch (Exception ex)
             {
@@ -183,7 +183,7 @@ namespace FIAS_Murt
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.Navigate(new GARPage(mainFrame));
+            NavigationService.GoBack();
         }
     }
 }

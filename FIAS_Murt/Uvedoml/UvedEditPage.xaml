@@ -5,33 +5,54 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:FIAS_Murt.Uvedoml"
       mc:Ignorable="d"
-      Title="Редактирование уведомления">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+      Title="Добавление/Редактирование уведомления">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <!-- Строки для полей -->
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <!-- Кнопки -->
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-        <StackPanel Margin="20">
-            <TextBlock Text="Заявка (ID):" />
-            <TextBox x:Name="txtIDZayavki" />
+            <!-- ID уведомления (только для редактирования) -->
+            <Label Grid.Row="0" Grid.Column="0" Content="ID уведомления:" />
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="tbID_Uvedoml" IsEnabled="False" Margin="5" />
 
-            <TextBlock Text="Тип уведомления:" />
-            <TextBox x:Name="txtTypeUved" />
+            <!-- ID заявки -->
+            <Label Grid.Row="1" Grid.Column="0" Content="ID заявки:" />
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbID_Zayavki" Margin="5" ToolTip="Введите числовое значение" />
 
-            <TextBlock Text="Статус:" />
-            <TextBox x:Name="txtStatusUved" />
+            <!-- Тип уведомления -->
+            <Label Grid.Row="2" Grid.Column="0" Content="Тип уведомления:" />
+            <TextBox Grid.Row="2" Grid.Column="1" x:Name="tbType_Uved" Margin="5" />
 
-            <TextBlock Text="Дата исполнения:" />
-            <DatePicker x:Name="dpDataIspoln" />
+            <!-- Статус уведомления -->
+            <Label Grid.Row="3" Grid.Column="0" Content="Статус:" />
+            <TextBox Grid.Row="3" Grid.Column="1" x:Name="tbStatus_Uved" Margin="5" />
 
-            <TextBlock Text="Комментарий:" />
-            <TextBox x:Name="txtKommentarii" />
+            <!-- Дата исполнения -->
+            <Label Grid.Row="4" Grid.Column="0" Content="Дата исполнения:" />
+            <DatePicker Grid.Row="4" Grid.Column="1" x:Name="dpData_Ispoln" Margin="5" />
 
-            <StackPanel Orientation="Horizontal" Margin="10">
+            <!-- Комментарий -->
+            <Label Grid.Row="5" Grid.Column="0" Content="Комментарий:" />
+            <TextBox Grid.Row="5" Grid.Column="1" x:Name="tbKommentarii" Margin="5" TextWrapping="Wrap" Height="60" />
+
+            <!-- Кнопки -->
+            <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
                 <Button Content="Сохранить" Width="100" Margin="5" Click="SaveButton_Click" />
                 <Button Content="Отмена" Width="100" Margin="5" Click="CancelButton_Click" />
             </StackPanel>
-        </StackPanel>
-    </Grid>
+        </Grid>
+    </ScrollViewer>
 </Page>

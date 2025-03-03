@@ -52,7 +52,7 @@ namespace FIAS_Murt
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             // Переход на страницу добавления (передаём null для нового объекта)
-            mainFrame.Navigate(new GarEditPage(mainFrame, db, null));
+            NavigationService.Navigate(new GarEditPage(mainFrame, db, null));
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
@@ -60,7 +60,7 @@ namespace FIAS_Murt
             if (dataGridGar.SelectedItem is GAR selectedGar)
             {
                 // Переход на страницу редактирования с выбранной записью
-                mainFrame.Navigate(new GarEditPage(mainFrame, db, selectedGar));
+                NavigationService.Navigate(new GarEditPage(mainFrame, db, selectedGar));
             }
             else
             {

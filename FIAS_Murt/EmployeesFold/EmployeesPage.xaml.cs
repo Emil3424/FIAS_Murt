@@ -1,4 +1,5 @@
 ﻿using FIAS_Murt.MessageWind;
+using FIAS_Murt.ZayavkaFold;
 using System;
 using System.Linq;
 using System.Windows;
@@ -12,13 +13,14 @@ namespace FIAS_Murt.EmployeesFold
     public partial class EmployeesPage : Page
     {
         private Frame mainFrame;
-        private FIAS_PraktikaEntities db = new FIAS_PraktikaEntities();
+        private FIAS_PraktikaEntities db;
 
         public EmployeesPage(Frame frame)
         {
             InitializeComponent();
             try
             {
+                db = new FIAS_PraktikaEntities();
                 LoadData();
             }
             catch (Exception ex)
@@ -42,14 +44,14 @@ namespace FIAS_Murt.EmployeesFold
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.Navigate(new EmployeesEditPage(mainFrame, db, null));
+            NavigationService.Navigate(new EmployeesEditPage(null));
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             if (dataGridEmployees.SelectedItem is Employees selectedEmployee)
             {
-                mainFrame.Navigate(new EmployeesEditPage(mainFrame, db, selectedEmployee));
+                NavigationService.Navigate(new EmployeesEditPage(selectedEmployee));
             }
             else
             {
