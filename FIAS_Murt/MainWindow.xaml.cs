@@ -1,12 +1,12 @@
-﻿using FIAS_Murt.EmployeesFold;
+﻿using FIAS_Murt.DokumentsFold;
+using FIAS_Murt.EmployeesFold;
 using FIAS_Murt.Uvedoml;
 using FIAS_Murt.ZayavkaFold;
-using System.Diagnostics;
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using FIAS_Murt.DokumentsFold;
 using System.Windows.Media.Animation;
 
 namespace FIAS_Murt
@@ -89,6 +89,7 @@ namespace FIAS_Murt
                 MessageBox.Show($"Не удалось открыть сайт: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
         private bool isSidebarOpen = false;
 
         private void ToggleSidebar(object sender, MouseButtonEventArgs e)
@@ -105,7 +106,5 @@ namespace FIAS_Murt
             }
             isSidebarOpen = !isSidebarOpen;
         }
-
-
     }
 }

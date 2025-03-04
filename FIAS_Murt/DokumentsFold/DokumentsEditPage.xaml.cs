@@ -1,18 +1,8 @@
 ﻿using FIAS_Murt.MessageWind;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FIAS_Murt.DokumentsFold
 {
@@ -24,6 +14,7 @@ namespace FIAS_Murt.DokumentsFold
         private FIAS_PraktikaEntities db = new FIAS_PraktikaEntities();
         private Dokuments currentDokument;
         private bool isNew;
+
         public DokumentsEditPage(Dokuments dokument)
         {
             InitializeComponent();
@@ -48,10 +39,8 @@ namespace FIAS_Murt.DokumentsFold
         {
             try
             {
-                // Считывание типа документа
                 currentDokument.Type_Dok = tbType_Dok.Text.Trim();
 
-                // Дата документа — обязательна для выбора
                 if (!dpDate_Dok.SelectedDate.HasValue)
                 {
                     MessageBox.Show("Выберите дату для Даты документа.");
@@ -59,7 +48,6 @@ namespace FIAS_Murt.DokumentsFold
                 }
                 currentDokument.Date_Dok = dpDate_Dok.SelectedDate.Value;
 
-                // Наименование
                 currentDokument.Naimenovanie = tbNaimenovanie.Text.Trim();
 
                 if (isNew)
@@ -69,7 +57,8 @@ namespace FIAS_Murt.DokumentsFold
                 MessageWindow successWindow = new MessageWindow("Запись успешно сохранена");
                 successWindow.Owner = Application.Current.MainWindow;
                 successWindow.ShowDialog();
-                NavigationService.GoBack();
+                NavigationService navService = NavigationService.GetNavigationService(this);
+                navService.Navigate(new DokumentsPage(null));
             }
             catch (Exception ex)
             {

@@ -13,11 +13,9 @@ namespace FIAS_Murt
         private readonly FIAS_PraktikaEntities db;
         public GAR Gar { get; set; }
 
-        // Флаг, показывающий, новая это запись или редактирование существующей
         private bool isNew;
 
         /// <summary>
-        /// Если параметр gar == null – создаётся новая запись, иначе редактируется существующая.
         /// </summary>
         public GarEditPage(Frame frame, FIAS_PraktikaEntities context, GAR gar)
         {
@@ -34,7 +32,6 @@ namespace FIAS_Murt
             {
                 Gar = gar;
                 isNew = false;
-                // Заполнение полей для редактирования
                 tbID_GAR.Text = Gar.ID_GAR.ToString();
                 tbMunOtdel.Text = Gar.Mun_otdel;
                 tbAdministrOtdel.Text = Gar.Administr_otdel;

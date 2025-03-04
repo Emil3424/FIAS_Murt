@@ -12,7 +12,6 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- DataGrid для отображения всех столбцов таблицы GAR -->
         <DataGrid x:Name="dataGridGar" AutoGenerateColumns="False" Margin="10" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID_GAR" Binding="{Binding ID_GAR}" Width="60" />
@@ -31,7 +30,6 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <!-- Панель кнопок для управления -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
             <Button Content="Добавить" Click="AddButton_Click" Width="100" Margin="5" />
             <Button Content="Изменить" Click="EditButton_Click" Width="100" Margin="5" />

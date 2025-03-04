@@ -9,94 +9,65 @@
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid Margin="10">
             <Grid.RowDefinitions>
-                <!-- По одной строке на каждое поле + строка для кнопок -->
                 <RowDefinition Height="Auto" />
-                <!-- ID_GAR -->
                 <RowDefinition Height="Auto" />
-                <!-- Mun_otdel -->
                 <RowDefinition Height="Auto" />
-                <!-- Administr_otdel -->
                 <RowDefinition Height="Auto" />
-                <!-- IFNSL_FL -->
                 <RowDefinition Height="Auto" />
-                <!-- IFNSL_YL -->
                 <RowDefinition Height="Auto" />
-                <!-- OKATO -->
                 <RowDefinition Height="Auto" />
-                <!-- OKTMO -->
                 <RowDefinition Height="Auto" />
-                <!-- Pochta_Index -->
                 <RowDefinition Height="Auto" />
-                <!-- ID_Reestr -->
                 <RowDefinition Height="Auto" />
-                <!-- Kadastr_nom -->
                 <RowDefinition Height="Auto" />
-                <!-- Status_zap -->
                 <RowDefinition Height="Auto" />
-                <!-- Data_Vnesenia -->
                 <RowDefinition Height="Auto" />
-                <!-- Data_aktual -->
                 <RowDefinition Height="Auto" />
-                <!-- Кнопки -->
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!-- ID_GAR -->
             <Label Grid.Row="0" Grid.Column="0" Content="ID_GAR:" VerticalAlignment="Center" Margin="5" />
             <TextBox Grid.Row="0" Grid.Column="1" x:Name="tbID_GAR" Margin="5" />
 
-            <!-- Mun_otdel -->
             <Label Grid.Row="1" Grid.Column="0" Content="Mun_otdel:" VerticalAlignment="Center" Margin="5" />
             <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbMunOtdel" Margin="5" />
 
-            <!-- Administr_otdel -->
             <Label Grid.Row="2" Grid.Column="0" Content="Administr_otdel:" VerticalAlignment="Center" Margin="5" />
             <TextBox Grid.Row="2" Grid.Column="1" x:Name="tbAdministrOtdel" Margin="5" />
 
-            <!-- IFNSL_FL -->
             <Label Grid.Row="3" Grid.Column="0" Content="IFNSL_FL:" VerticalAlignment="Center" Margin="5" />
             <TextBox Grid.Row="3" Grid.Column="1" x:Name="tbIFNSL_FL" Margin="5" ToolTip="Введите четырехзначное число (например, 1234)" />
 
-            <!-- IFNSL_YL -->
             <Label Grid.Row="4" Grid.Column="0" Content="IFNSL_YL:" VerticalAlignment="Center" Margin="5" />
             <TextBox Grid.Row="4" Grid.Column="1" x:Name="tbIFNSL_YL" Margin="5" ToolTip="Введите четырехзначное число (например, 5678)" />
 
-            <!-- OKATO -->
             <Label Grid.Row="5" Grid.Column="0" Content="OKATO:" VerticalAlignment="Center" Margin="5" />
             <TextBox Grid.Row="5" Grid.Column="1" x:Name="tbOKATO" Margin="5" ToolTip="Введите 9 цифр" />
 
-            <!-- OKTMO -->
             <Label Grid.Row="6" Grid.Column="0" Content="OKTMO:" VerticalAlignment="Center" Margin="5" />
             <TextBox Grid.Row="6" Grid.Column="1" x:Name="tbOKTMO" Margin="5" ToolTip="Введите 9 цифр" />
 
-            <!-- Pochta_Index -->
             <Label Grid.Row="7" Grid.Column="0" Content="Pochta_Index:" VerticalAlignment="Center" Margin="5" />
             <TextBox Grid.Row="7" Grid.Column="1" x:Name="tbPochta_Index" Margin="5" />
 
-            <!-- ID_Reestr -->
             <Label Grid.Row="8" Grid.Column="0" Content="ID_Reestr:" VerticalAlignment="Center" Margin="5" />
             <TextBox Grid.Row="8" Grid.Column="1" x:Name="tbID_Reestr" Margin="5" />
 
-            <!-- Kadastr_nom -->
             <Label Grid.Row="9" Grid.Column="0" Content="Kadastr_nom:" VerticalAlignment="Center" Margin="5" />
             <TextBox Grid.Row="9" Grid.Column="1" x:Name="tbKadastr_nom" Margin="5" ToolTip="Не более 20 символов" />
 
-            <!-- Status_zap -->
             <Label Grid.Row="10" Grid.Column="0" Content="Status_zap:" VerticalAlignment="Center" Margin="5" />
             <TextBox Grid.Row="10" Grid.Column="1" x:Name="tbStatus_zap" Margin="5" ToolTip="Не более 25 символов" />
 
-            <!-- Data_Vnesenia -->
             <Label Grid.Row="11" Grid.Column="0" Content="Data_Vnesenia:" VerticalAlignment="Center" Margin="5" />
             <DatePicker Grid.Row="11" Grid.Column="1" x:Name="dpData_Vnesenia" Margin="5" />
 
-            <!-- Data_aktual -->
             <Label Grid.Row="12" Grid.Column="0" Content="Data_aktual:" VerticalAlignment="Center" Margin="5" />
             <DatePicker Grid.Row="12" Grid.Column="1" x:Name="dpData_aktual" Margin="5" />
 
-            <!-- Кнопки -->
             <StackPanel Grid.Row="13" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
                 <Button Content="Сохранить" Click="SaveButton_Click" Width="100" Margin="5" />
                 <Button Content="Отмена" Click="CancelButton_Click" Width="100" Margin="5" />

@@ -5,14 +5,12 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <!-- Определяем основные цвета -->
             <SolidColorBrush x:Key="PrimaryBrush" Color="#2C3E50" />
             <SolidColorBrush x:Key="SecondaryBrush" Color="#3498DB" />
             <SolidColorBrush x:Key="AccentBrush" Color="#E74C3C" />
             <SolidColorBrush x:Key="BackgroundBrush" Color="#ECF0F1" />
             <SolidColorBrush x:Key="ControlBackgroundBrush" Color="White" />
 
-            <!-- Стиль для кнопок -->
             <Style TargetType="Button">
                 <Setter Property="Background" Value="{StaticResource SecondaryBrush}" />
                 <Setter Property="Foreground" Value="White" />
@@ -35,7 +33,6 @@
                 </Setter>
             </Style>
 
-            <!-- Стиль для текстовых полей -->
             <Style TargetType="TextBox">
                 <Setter Property="Margin" Value="5" />
                 <Setter Property="FontSize" Value="14" />
@@ -44,14 +41,12 @@
                 <Setter Property="BorderThickness" Value="1" />
             </Style>
 
-            <!-- Стиль для меток -->
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="14" />
                 <Setter Property="Margin" Value="5" />
                 <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
             </Style>
 
-            <!-- Стиль для DataGrid -->
             <Style TargetType="DataGrid">
                 <Setter Property="Margin" Value="10" />
                 <Setter Property="FontSize" Value="14" />
@@ -61,7 +56,6 @@
                 <Setter Property="BorderBrush" Value="{StaticResource SecondaryBrush}" />
             </Style>
 
-            <!-- Стиль для страниц -->
             <Style TargetType="Page">
                 <Setter Property="Background" Value="{StaticResource BackgroundBrush}" />
                 <Setter Property="FontFamily" Value="Segoe UI" />

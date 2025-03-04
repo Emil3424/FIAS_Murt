@@ -29,7 +29,6 @@ namespace FIAS_Murt
             }
         }
 
-        // Загрузка всех данных из таблицы GAR
         private void LoadData()
         {
             try
@@ -51,7 +50,6 @@ namespace FIAS_Murt
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            // Переход на страницу добавления (передаём null для нового объекта)
             NavigationService.Navigate(new GarEditPage(mainFrame, db, null));
         }
 
@@ -59,7 +57,6 @@ namespace FIAS_Murt
         {
             if (dataGridGar.SelectedItem is GAR selectedGar)
             {
-                // Переход на страницу редактирования с выбранной записью
                 NavigationService.Navigate(new GarEditPage(mainFrame, db, selectedGar));
             }
             else
@@ -72,7 +69,6 @@ namespace FIAS_Murt
         {
             if (dataGridGar.SelectedItem is GAR selectedEmployee)
             {
-                // Открываем окно подтверждения удаления
                 FRDeleteWindow confirmWindow = new FRDeleteWindow
                 {
                     Owner = Application.Current.MainWindow
@@ -83,7 +79,6 @@ namespace FIAS_Murt
                     {
                         db.GAR.Remove(selectedEmployee);
                         db.SaveChanges();
-                        // Показываем окно успеха
                         MessageWindow successWindow = new MessageWindow("Запись успешно удалена")
                         {
                             Owner = Application.Current.MainWindow

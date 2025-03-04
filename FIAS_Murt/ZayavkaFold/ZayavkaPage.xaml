@@ -11,7 +11,6 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- DataGrid для отображения заявок -->
         <DataGrid x:Name="dataGridZayavka" AutoGenerateColumns="False"
               IsReadOnly="True" Margin="0,0,0,10" SelectionMode="Single">
             <DataGrid.Columns>
@@ -25,7 +24,6 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <!-- Панель кнопок -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="Добавить" Width="100" Margin="5" Click="AddButton_Click" />
             <Button Content="Изменить" Width="100" Margin="5" Click="EditButton_Click" />

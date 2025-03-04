@@ -12,9 +12,6 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <!-- Панель кнопок -->
-
-        <!-- Таблица данных -->
         <DataGrid x:Name="dataGridUved" Grid.Row="0" Margin="10" AutoGenerateColumns="False"
                   IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>

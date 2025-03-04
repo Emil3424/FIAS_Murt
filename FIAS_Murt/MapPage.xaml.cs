@@ -12,7 +12,7 @@ namespace FIAS_Murt
     /// </summary>
     public partial class MapPage : Page
     {
-        private readonly string fiasApiUrl = "https://fias.nalog.ru/Public/DownloadPage.aspx?type=API"; // Указать актуальный URL
+        private readonly string fiasApiUrl = "https://fias.nalog.ru/Public/DownloadPage.aspx?type=API";
 
         public MapPage(Frame frame)
         {
@@ -43,7 +43,7 @@ namespace FIAS_Murt
     </style>
     <script type='text/javascript'>
         ymaps.ready(init);
-        
+
         function init() {
             var myMap = new ymaps.Map('map', {
                 center: [56.098044, 54.228128],

@@ -11,7 +11,6 @@ namespace FIAS_Murt
     {
         public SeriesCollection SeriesCollection { get; set; }
 
-        // Предполагается, что FIAS_PraktikaEntities настроен для вашей БД ФИАС
         private FIAS_PraktikaEntities db = new FIAS_PraktikaEntities();
 
         public GraphicPage(Frame frame)
@@ -25,16 +24,12 @@ namespace FIAS_Murt
         {
             try
             {
-                // Извлекаем все записи из таблицы Zayavka
                 var data = db.Zayavka.ToList();
 
-
-                // Группируем заявки по типу (если значение null, заменяем на "Не указан")
                 var grouped = data.GroupBy(z => z.Type_zayavki ?? "Не указан")
                                   .Select(g => new { Type = g.Key, Count = g.Count() })
                                   .ToList();
 
-                // Формируем коллекцию серий для диаграммы
                 SeriesCollection = new SeriesCollection();
                 foreach (var item in grouped)
                 {

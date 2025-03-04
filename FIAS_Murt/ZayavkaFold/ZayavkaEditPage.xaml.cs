@@ -1,4 +1,5 @@
-﻿using FIAS_Murt.MessageWind;
+﻿using FIAS_Murt.DokumentsFold;
+using FIAS_Murt.MessageWind;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,7 +27,6 @@ namespace FIAS_Murt.ZayavkaFold
             }
             else
             {
-                // Для редактирования получаем отслеживаемую сущность
                 currentZayavka = db.Zayavka.Find(zayavka.ID_zayavki);
                 isNew = false;
                 tbID_zayavki.Text = currentZayavka.ID_zayavki.ToString();
@@ -43,12 +43,9 @@ namespace FIAS_Murt.ZayavkaFold
         {
             try
             {
-                // Тип заявки – можно оставить пустым
                 currentZayavka.Type_zayavki = tbType_zayavki.Text.Trim();
-                // Уровень – можно оставить пустым
                 currentZayavka.Uroven = tbUroven.Text.Trim();
 
-                // ID_GAR – обязательно должно быть числовое значение
                 if (!int.TryParse(tbID_GAR.Text.Trim(), out int idGar))
                 {
                     MessageBox.Show("Введите корректное числовое значение для ID GAR.");
@@ -56,7 +53,6 @@ namespace FIAS_Murt.ZayavkaFold
                 }
                 currentZayavka.ID_GAR = idGar;
 
-                // Создатель заявки – если указано, должно быть числовым
                 if (!string.IsNullOrWhiteSpace(tbSozdatel_zayav.Text))
                 {
                     if (!int.TryParse(tbSozdatel_zayav.Text.Trim(), out int sozdatel))
@@ -71,7 +67,6 @@ namespace FIAS_Murt.ZayavkaFold
                     currentZayavka.Sozdatel_zayav = null;
                 }
 
-                // Дата создания – обязательна
                 if (!dpData_sozdaniya.SelectedDate.HasValue)
                 {
                     MessageBox.Show("Выберите дату для Даты создания.");
@@ -79,7 +74,6 @@ namespace FIAS_Murt.ZayavkaFold
                 }
                 currentZayavka.Data_sozdaniya = dpData_sozdaniya.SelectedDate.Value;
 
-                // Дата создания 2 – обязательна
                 if (!dpData_sozd2.SelectedDate.HasValue)
                 {
                     MessageBox.Show("Выберите дату для Даты создания 2.");
@@ -96,7 +90,8 @@ namespace FIAS_Murt.ZayavkaFold
                 MessageWindow successWindow = new MessageWindow("Запись успешно сохранена");
                 successWindow.Owner = Application.Current.MainWindow;
                 successWindow.ShowDialog();
-                NavigationService.GoBack();
+                NavigationService navService = NavigationService.GetNavigationService(this);
+                navService.Navigate(new ZayavkaPage(null));
             }
             catch (Exception ex)
             {

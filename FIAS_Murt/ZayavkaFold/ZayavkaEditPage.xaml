@@ -8,58 +8,41 @@
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid Margin="10">
             <Grid.RowDefinitions>
-                <!-- Строки для полей: если заявка редактируется, отображаем ID, иначе оставляем пустым -->
                 <RowDefinition Height="Auto" />
-                <!-- ID заявки (отображается, если редактирование) -->
                 <RowDefinition Height="Auto" />
-                <!-- Тип заявки -->
                 <RowDefinition Height="Auto" />
-                <!-- Уровень -->
                 <RowDefinition Height="Auto" />
-                <!-- ID_GAR -->
                 <RowDefinition Height="Auto" />
-                <!-- Создатель заявки -->
                 <RowDefinition Height="Auto" />
-                <!-- Дата создания -->
                 <RowDefinition Height="Auto" />
-                <!-- Дата создания 2 -->
                 <RowDefinition Height="Auto" />
-                <!-- Кнопки -->
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!-- ID заявки (только для редактирования) -->
             <Label Grid.Row="0" Grid.Column="0" Content="ID заявки:" />
             <TextBox Grid.Row="0" Grid.Column="1" x:Name="tbID_zayavki" IsEnabled="False" Margin="5" />
 
-            <!-- Тип заявки -->
             <Label Grid.Row="1" Grid.Column="0" Content="Тип заявки:" />
             <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbType_zayavki" Margin="5" />
 
-            <!-- Уровень -->
             <Label Grid.Row="2" Grid.Column="0" Content="Уровень:" />
             <TextBox Grid.Row="2" Grid.Column="1" x:Name="tbUroven" Margin="5" />
 
-            <!-- ID_GAR -->
             <Label Grid.Row="3" Grid.Column="0" Content="ID GAR:" />
             <TextBox Grid.Row="3" Grid.Column="1" x:Name="tbID_GAR" Margin="5" ToolTip="Введите числовое значение" />
 
-            <!-- Создатель заявки -->
             <Label Grid.Row="4" Grid.Column="0" Content="Создатель заявки:" />
             <TextBox Grid.Row="4" Grid.Column="1" x:Name="tbSozdatel_zayav" Margin="5" ToolTip="Введите числовое значение" />
 
-            <!-- Дата создания -->
             <Label Grid.Row="5" Grid.Column="0" Content="Дата создания:" />
             <DatePicker Grid.Row="5" Grid.Column="1" x:Name="dpData_sozdaniya" Margin="5" />
 
-            <!-- Дата создания 2 -->
             <Label Grid.Row="6" Grid.Column="0" Content="Дата создания 2:" />
             <DatePicker Grid.Row="6" Grid.Column="1" x:Name="dpData_sozd2" Margin="5" />
 
-            <!-- Кнопки -->
             <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
                 <Button Content="Сохранить" Width="100" Margin="5" Click="SaveButton_Click" />
                 <Button Content="Отмена" Width="100" Margin="5" Click="CancelButton_Click" />

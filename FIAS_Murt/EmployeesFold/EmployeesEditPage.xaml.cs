@@ -1,7 +1,9 @@
-﻿using FIAS_Murt.MessageWind;
+﻿using FIAS_Murt.DokumentsFold;
+using FIAS_Murt.MessageWind;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace FIAS_Murt.EmployeesFold
 {
@@ -89,7 +91,8 @@ namespace FIAS_Murt.EmployeesFold
                 MessageWindow successWindow = new MessageWindow("Запись успешно сохранена");
                 successWindow.Owner = Application.Current.MainWindow;
                 successWindow.ShowDialog();
-                NavigationService.GoBack();
+                NavigationService navService = NavigationService.GetNavigationService(this);
+                navService.Navigate(new EmployeesPage(null));
             }
             catch (Exception ex)
             {

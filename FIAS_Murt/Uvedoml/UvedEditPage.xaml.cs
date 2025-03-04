@@ -1,4 +1,5 @@
-﻿using FIAS_Murt.MessageWind;
+﻿using FIAS_Murt.DokumentsFold;
+using FIAS_Murt.MessageWind;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -54,7 +55,8 @@ namespace FIAS_Murt.Uvedoml
                 MessageWindow successWindow = new MessageWindow("Уведомление сохранено!");
                 successWindow.Owner = Application.Current.MainWindow;
                 successWindow.ShowDialog();
-                NavigationService.GoBack();
+                NavigationService navService = NavigationService.GetNavigationService(this);
+                navService.Navigate(new UvedPage(null));
             }
             catch (Exception ex)
             {

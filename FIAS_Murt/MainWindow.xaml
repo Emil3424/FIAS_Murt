@@ -15,7 +15,7 @@
                          From="0" To="250"
                          Duration="0:0:0.3"
                          AccelerationRatio="0.5"
-                         DecelerationRatio="0.5"/>
+                         DecelerationRatio="0.5" />
         </Storyboard>
 
         <Storyboard x:Key="SidebarCollapse">
@@ -24,19 +24,15 @@
                          From="250" To="0"
                          Duration="0:0:0.3"
                          AccelerationRatio="0.5"
-                         DecelerationRatio="0.5"/>
+                         DecelerationRatio="0.5" />
         </Storyboard>
     </Window.Resources>
     <Grid>
-        <Grid.RowDefinitions>   
+        <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <!-- Шапка -->
             <RowDefinition Height="Auto" />
-            <!-- Горизонтальное меню -->
             <RowDefinition Height="*" />
-            <!-- Основное поле -->
             <RowDefinition Height="Auto" />
-            <!-- Подвал -->
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0" Background="White" Padding="10">
@@ -61,12 +57,11 @@
             </Grid>
         </Border>
 
-        <!-- Горизонтальное меню -->
         <Border Grid.Row="1" Background="#2c4058" Padding="10" Panel.ZIndex="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                 <StackPanel Orientation="Horizontal" Cursor="Hand" MouseLeftButtonUp="ToggleSidebar">
-                    <TextBlock Text="☰" FontSize="24" Foreground="#c0c6cd" Margin="0,0,10,0"/>
-                    <TextBlock Text="Меню" FontSize="24" Foreground="#c0c6cd" Margin="0,0,20,0"/>
+                    <TextBlock Text="☰" FontSize="24" Foreground="#c0c6cd" Margin="0,0,10,0" />
+                    <TextBlock Text="Меню" FontSize="24" Foreground="#c0c6cd" Margin="0,0,20,0" />
                 </StackPanel>
                 <TextBlock Text="Главная" MouseLeftButtonUp="Navigate_Click" Margin="0,0,20,0" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" />
                 <TextBlock Text="ГАР" MouseLeftButtonUp="Navigate_Click" Margin="0,0,20,0" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" />
@@ -79,18 +74,17 @@
             </StackPanel>
         </Border>
 
-
         <Border x:Name="Sidebar" Background="#2c4058" Width="0" Height="Auto"
             VerticalAlignment="Stretch" HorizontalAlignment="Left" MouseLeftButtonUp="ToggleSidebar"
             Panel.ZIndex="2" Grid.Row="2">
             <StackPanel>
-                <TextBlock Text="ГАР" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10"/>
-                <TextBlock Text="Заявки" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10"/>
-                <TextBlock Text="Карта" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10"/>
-                <TextBlock Text="Граф" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10"/>
-                <TextBlock Text="Сотрудники" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10"/>
-                <TextBlock Text="Уведомления" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10"/>
-                <TextBlock Text="Документы" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10"/>
+                <TextBlock Text="ГАР" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10" />
+                <TextBlock Text="Заявки" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10" />
+                <TextBlock Text="Карта" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10" />
+                <TextBlock Text="Граф" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10" />
+                <TextBlock Text="Сотрудники" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10" />
+                <TextBlock Text="Уведомления" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10" />
+                <TextBlock Text="Документы" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10" />
             </StackPanel>
         </Border>
 
@@ -98,7 +92,7 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="3" Background="#2c4058">
             <Image Source="C:\Users\Эмиль\Desktop\Gerb1.png" Height="50" VerticalAlignment="Top"
-                   MouseDown="Image_MouseDown" Cursor="Hand"/>
+                   MouseDown="Image_MouseDown" Cursor="Hand" />
             <StackPanel Orientation="Vertical" Grid.Row="3">
                 <TextBlock Text="ФЕДЕРАЛЬНАЯ ИНФОРМАЦИОННАЯ АДРЕСНАЯ СИСТЕМА"
                            FontWeight="Bold" MouseDown="Image_MouseDown"
@@ -108,20 +102,19 @@
                            Width="450"
                            TextWrapping="Wrap"
                            Padding="10"
-                           FontFamily="Roboto"/>
-                <TextBlock Text="© 2011-2024 ФНС России" FontFamily="Roboto" FontSize="14" Foreground="#ADADB8" Padding="10"/>
+                           FontFamily="Roboto" />
+                <TextBlock Text="© 2011-2024 ФНС России" FontFamily="Roboto" FontSize="14" Foreground="#ADADB8" Padding="10" />
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="3" HorizontalAlignment="Right">
-            <StackPanel Orientation="Horizontal" Cursor="Hand" MouseDown="Podderzhka_MouseDown" 
+            <StackPanel Orientation="Horizontal" Cursor="Hand" MouseDown="Podderzhka_MouseDown"
                         ToolTip="Перейти в службу технической поддержки">
-                <Image Source="C:\Users\Эмиль\Desktop\Podderzh.png" Stretch="None"/>
+                <Image Source="C:\Users\Эмиль\Desktop\Podderzh.png" Stretch="None" />
                 <TextBlock Text="Обратиться в службу технической поддержки" FontFamily="Roboto" FontSize="14"
-                       Foreground="#ADADB8" Padding="10"/>
+                       Foreground="#ADADB8" Padding="10" />
             </StackPanel>
             <TextBlock Text="Последнее обновление ПО ФИАС от 25.02.2025" FontFamily="Roboto" FontSize="14"
-           Foreground="White" Padding="10"/>
-            
+           Foreground="White" Padding="10" />
         </StackPanel>
     </Grid>
 </Window>
