@@ -6,6 +6,8 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using FIAS_Murt.DokumentsFold;
+using System.Windows.Media.Animation;
 
 namespace FIAS_Murt
 {
@@ -30,7 +32,7 @@ namespace FIAS_Murt
                 = sender as TextBlock;
             switch (textBlock.Text)
             {
-                case "Меню":
+                case "Главная":
                     MainFrame.Content = new MainPage();
                     break;
 
@@ -56,6 +58,10 @@ namespace FIAS_Murt
 
                 case "Уведомления":
                     MainFrame.Content = new UvedPage(MainFrame);
+                    break;
+
+                case "Документы":
+                    MainFrame.Content = new DokumentsPage(MainFrame);
                     break;
             }
         }
@@ -83,10 +89,23 @@ namespace FIAS_Murt
                 MessageBox.Show($"Не удалось открыть сайт: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        private bool isSidebarOpen = false;
+
         private void ToggleSidebar(object sender, MouseButtonEventArgs e)
         {
-            Sidebar.Visibility = Sidebar.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            if (isSidebarOpen)
+            {
+                Storyboard collapse = (Storyboard)FindResource("SidebarCollapse");
+                collapse.Begin();
+            }
+            else
+            {
+                Storyboard expand = (Storyboard)FindResource("SidebarExpand");
+                expand.Begin();
+            }
+            isSidebarOpen = !isSidebarOpen;
         }
+
 
     }
 }

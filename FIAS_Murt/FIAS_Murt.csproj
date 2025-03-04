@@ -110,6 +110,12 @@
     <Compile Include="Dokuments.cs">
       <DependentUpon>FIAS.tt</DependentUpon>
     </Compile>
+    <Compile Include="DokumentsFold\DokumentsEditPage.xaml.cs">
+      <DependentUpon>DokumentsEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DokumentsFold\DokumentsPage.xaml.cs">
+      <DependentUpon>DokumentsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeActivity.cs">
       <DependentUpon>FIAS.tt</DependentUpon>
     </Compile>
@@ -211,6 +217,14 @@
     <Compile Include="ZayavkaHistory_Result.cs">
       <DependentUpon>FIAS.tt</DependentUpon>
     </Compile>
+    <Page Include="DokumentsFold\DokumentsEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DokumentsFold\DokumentsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EmployeesFold\EmployeesEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
