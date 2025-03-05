@@ -2,6 +2,7 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <LangVersion>latest</LangVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FD32ABBB-A050-4832-8E68-4C0E72931D7B}</ProjectGuid>
@@ -43,6 +44,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -296,6 +298,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EntityDeploy Include="FIAS.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -323,6 +326,10 @@
       <DependentUpon>FIAS.edmx</DependentUpon>
       <LastGenOutput>FIAS.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Podderzh.png" />
+    <Resource Include="Resources\Gerb1.png" />
+    <Resource Include="Resources\Gerb.png" />
+    <Resource Include="Resources\surprise.png" />
     <Resource Include="photo_2025-03-04_02-35.ico" />
   </ItemGroup>
   <ItemGroup>

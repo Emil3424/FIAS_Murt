@@ -44,7 +44,7 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Orientation="Horizontal" MouseDown="Image_MouseDown" Cursor="Hand" ToolTip="Перейти на сайт ФИАС">
-                    <Image Source="C:\Users\Эмиль\Desktop\Gerb.png" Height="70" />
+                    <Image Source="pack://application:,,,/Resources/Gerb.png" Height="70" />
                     <TextBlock Text="Федеральная информационная адресная система"
                            FontWeight="Bold"
                            FontSize="26"
@@ -91,7 +91,7 @@
         <Frame x:Name="MainFrame" Grid.Row="2" NavigationUIVisibility="Hidden" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="3" Background="#2c4058">
-            <Image Source="C:\Users\Эмиль\Desktop\Gerb1.png" Height="50" VerticalAlignment="Top"
+            <Image Source="pack://application:,,,/Resources/Gerb1.png" Height="50" VerticalAlignment="Top"
                    MouseDown="Image_MouseDown" Cursor="Hand" />
             <StackPanel Orientation="Vertical" Grid.Row="3">
                 <TextBlock Text="ФЕДЕРАЛЬНАЯ ИНФОРМАЦИОННАЯ АДРЕСНАЯ СИСТЕМА"
@@ -109,7 +109,7 @@
         <StackPanel Grid.Row="3" HorizontalAlignment="Right">
             <StackPanel Orientation="Horizontal" Cursor="Hand" MouseDown="Podderzhka_MouseDown"
                         ToolTip="Перейти в службу технической поддержки">
-                <Image Source="C:\Users\Эмиль\Desktop\Podderzh.png" Stretch="None" />
+                <Image Source="pack://application:,,,/Resources/Podderzh.png" Stretch="None" />
                 <TextBlock Text="Обратиться в службу технической поддержки" FontFamily="Roboto" FontSize="14"
                        Foreground="#ADADB8" Padding="10" />
             </StackPanel>
