@@ -9,9 +9,8 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
+using WpfAnimatedGif;
 
 namespace FIAS_Murt
 {
@@ -30,78 +29,33 @@ namespace FIAS_Murt
         { Key.Up, Key.Up, Key.Down, Key.Down, Key.Left, Key.Right, Key.Left, Key.Right};
 
         private List<Key> currentInput = new();
+
         private void MainWindow_KeyDown(object sender, KeyEventArgs e)
         {
             currentInput.Add(e.Key);
-
-            // Если ввод превышает длину кода, обрезаем лишнее
             if (currentInput.Count > konamiCode.Count)
                 currentInput.RemoveAt(0);
 
-            // Проверяем совпадение
             if (currentInput.Count == konamiCode.Count && !konamiCode.Where((t, i) => t != currentInput[i]).Any())
             {
-                ActivateCrackEffect();
+                ShowGIFOverlay();
                 currentInput.Clear();
             }
         }
 
-        private void ActivateCrackEffect()
+        private void ShowGIFOverlay()
         {
-            Grid mainGrid = this.Content as Grid;
-            if (mainGrid == null) return;
-
-            // Начальный и конечный прямоугольники для разрыва
-            Rect startRect = new Rect(0, 0, this.Width, this.Height);
-            Rect endRect = new Rect(this.Width / 4, 0, this.Width / 2, this.Height);
-
-            RectangleGeometry clipGeometry = new RectangleGeometry(startRect);
-            this.Clip = clipGeometry;
-
-            // Создаём анимацию трещины
-            RectAnimation crackAnimation = new RectAnimation
-            {
-                From = startRect,
-                To = endRect,
-                Duration = TimeSpan.FromSeconds(1),
-                AutoReverse = false
-            };
-
-            crackAnimation.Completed += (s, e) => ShowPopupImage();
-
-            clipGeometry.BeginAnimation(RectangleGeometry.RectProperty, crackAnimation);
+            var controller = ImageBehavior.GetAnimationController(Giff);
+            Giff.Visibility = Visibility.Visible;
+            ImageBehavior.SetRepeatBehavior(Giff, new RepeatBehavior(1)); // Установите повтор анимации на 1 раз
+            controller.Play(); //Запуск анимации
         }
 
-        private void ShowPopupImage()
+        private void Giff_AnimationCompleted(object sender, RoutedEventArgs e)
         {
-            Image popupImage = new Image
-            {
-                Source = new BitmapImage(new Uri("pack://application:,,,/Resources/surprise.png")),
-                Width = this.Width,
-                Height = this.Height,
-                Stretch = Stretch.Uniform,
-                RenderTransform = new ScaleTransform(0, 0),
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center
-            };
-
-            (this.Content as Grid)?.Children.Add(popupImage);
-
-            ScaleTransform scale = new();
-            popupImage.RenderTransform = scale;
-
-            DoubleAnimation scaleAnimation = new()
-            {
-                From = 0,
-                To = 1,
-                Duration = TimeSpan.FromSeconds(0.5),
-                EasingFunction = new BounceEase() { Bounces = 3, Bounciness = 2 }
-            };
-
-            scale.BeginAnimation(ScaleTransform.ScaleXProperty, scaleAnimation);
-            scale.BeginAnimation(ScaleTransform.ScaleYProperty, scaleAnimation);
+            Giff.Visibility = Visibility.Collapsed; // Скрыть GIF после завершения
+            ImageBehavior.SetRepeatBehavior(Giff, new RepeatBehavior(0)); // Возвращаем повтор анимации в 0, чтобы больше не воспроизводилась
         }
-
 
         private void Navigate_Click(object sender, RoutedEventArgs e)
         {
@@ -140,9 +94,16 @@ namespace FIAS_Murt
                 case "Документы":
                     MainFrame.Content = new DokumentsPage(MainFrame);
                     break;
+
+                case "Представления":
+                    MainFrame.Content = new ViewsPage(MainFrame);
+                    break;
+
+                case "Отчет Эксель":
+                    MainFrame.Content = new ReportsPage(MainFrame);
+                    break;
             }
         }
-
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             try

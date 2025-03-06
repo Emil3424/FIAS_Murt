@@ -6,9 +6,22 @@
       xmlns:local="clr-namespace:FIAS_Murt"
       mc:Ignorable="d"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-      Title="График заявок">
+      Title="Графики">
     <Grid Background="White">
-        <lvc:PieChart Series="{Binding SeriesCollection}" LegendLocation="Right">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="Выберите график:" VerticalAlignment="Center" FontSize="18" Margin="0,0,10,5" />
+            <ComboBox x:Name="cbGraphs" Width="200" SelectionChanged="cbGraphs_SelectionChanged" VerticalAlignment="Center">
+                <ComboBoxItem Content="ГАР" Tag="GAR" />
+                <ComboBoxItem Content="Сотрудники" Tag="Employees" />
+                <ComboBoxItem Content="Уведомления" Tag="Uvedomleniya" />
+                <ComboBoxItem Content="Документы" Tag="Dokuments" />
+            </ComboBox>
+        </StackPanel>
+        <lvc:PieChart x:Name="pieChart" Grid.Row="1" Series="{Binding SeriesCollection}" LegendLocation="Right">
             <lvc:PieChart.DataTooltip>
                 <lvc:DefaultTooltip SelectionMode="OnlySender" />
             </lvc:PieChart.DataTooltip>

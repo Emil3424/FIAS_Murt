@@ -1,12 +1,12 @@
 ﻿<Window x:Class="FIAS_Murt.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FIAS_Murt"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
         Title="Федеральная информационная адресная система"
-        Height="800" Width="1200"
+        Height="800" Width="1250" MinHeight="600" MinWidth="1000"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Storyboard x:Key="SidebarExpand">
@@ -85,6 +85,8 @@
                 <TextBlock Text="Сотрудники" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10" />
                 <TextBlock Text="Уведомления" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10" />
                 <TextBlock Text="Документы" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10" />
+                <TextBlock Text="Представления" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10" />
+                <TextBlock Text="Отчет Эксель" MouseLeftButtonUp="Navigate_Click" Cursor="Hand" FontSize="24" Foreground="#c0c6cd" Padding="10" />
             </StackPanel>
         </Border>
 
@@ -116,5 +118,7 @@
             <TextBlock Text="Последнее обновление ПО ФИАС от 25.02.2025" FontFamily="Roboto" FontSize="14"
            Foreground="White" Padding="10" />
         </StackPanel>
+        <Image gif:ImageBehavior.AnimatedSource="Resources/animation.gif" gif:ImageBehavior.RepeatBehavior="1x" x:Name="Giff"
+               Grid.Row="2" gif:ImageBehavior.AutoStart="False" Visibility="Hidden" gif:ImageBehavior.AnimationCompleted="Giff_AnimationCompleted" />
     </Grid>
 </Window>

@@ -10,37 +10,108 @@ namespace FIAS_Murt
     public partial class GraphicPage : Page
     {
         public SeriesCollection SeriesCollection { get; set; }
-
         private FIAS_PraktikaEntities db = new FIAS_PraktikaEntities();
 
         public GraphicPage(Frame frame)
         {
             InitializeComponent();
             DataContext = this;
-            LoadData();
+            cbGraphs.SelectedIndex = 0;
         }
 
-        private void LoadData()
+        private void cbGraphs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbGraphs.SelectedItem is ComboBoxItem item)
+            {
+                string tableTag = item.Tag.ToString();
+                LoadData(tableTag);
+            }
+        }
+
+        private void LoadData(string tableName)
         {
             try
             {
-                var data = db.Zayavka.ToList();
-
-                var grouped = data.GroupBy(z => z.Type_zayavki ?? "Не указан")
-                                  .Select(g => new { Type = g.Key, Count = g.Count() })
-                                  .ToList();
-
                 SeriesCollection = new SeriesCollection();
-                foreach (var item in grouped)
+                switch (tableName)
                 {
-                    SeriesCollection.Add(new PieSeries
-                    {
-                        Title = item.Type,
-                        Values = new ChartValues<int> { item.Count },
-                        DataLabels = true,
-                        LabelPoint = chartPoint => $"{item.Count} ({chartPoint.Participation:P})"
-                    });
+                    case "GAR":
+                        // По статусуууу ЗВписи
+                        var garData = db.GAR.ToList()
+                                        .GroupBy(g => g.Status_zap ?? "Не указан")
+                                        .Select(g => new { Category = g.Key, Count = g.Count() })
+                                        .ToList();
+                        foreach (var entry in garData)
+                        {
+                            SeriesCollection.Add(new PieSeries
+                            {
+                                Title = entry.Category,
+                                Values = new ChartValues<int> { entry.Count },
+                                DataLabels = true,
+                                LabelPoint = chartPoint => $"{entry.Count} ({chartPoint.Participation:P})"
+                            });
+                        }
+                        break;
+
+                    case "Employees":
+                        // КРЧ по первой букве ФИО
+                        var empData = db.Employees.ToList()
+                                        .GroupBy(emp => emp.FIO.Substring(0, 1).ToUpper())
+                                        .Select(g => new { Category = g.Key, Count = g.Count() })
+                                        .ToList();
+                        foreach (var entry in empData)
+                        {
+                            SeriesCollection.Add(new PieSeries
+                            {
+                                Title = entry.Category,
+                                Values = new ChartValues<int> { entry.Count },
+                                DataLabels = true,
+                                LabelPoint = chartPoint => $"{entry.Count} ({chartPoint.Participation:P})"
+                            });
+                        }
+                        break;
+
+                    case "Uvedomleniya":
+                        // По типу
+                        var uvedData = db.Uvedomleniya.ToList()
+                                        .GroupBy(u => u.Type_uved ?? "Не указан")
+                                        .Select(g => new { Category = g.Key, Count = g.Count() })
+                                        .ToList();
+                        foreach (var entry in uvedData)
+                        {
+                            SeriesCollection.Add(new PieSeries
+                            {
+                                Title = entry.Category,
+                                Values = new ChartValues<int> { entry.Count },
+                                DataLabels = true,
+                                LabelPoint = chartPoint => $"{entry.Count} ({chartPoint.Participation:P})"
+                            });
+                        }
+                        break;
+
+                    case "Dokuments":
+                        // ГПо Типу Документа
+                        var dokData = db.Dokuments.ToList()
+                                        .GroupBy(d => d.Type_Dok ?? "Не указан")
+                                        .Select(g => new { Category = g.Key, Count = g.Count() })
+                                        .ToList();
+                        foreach (var entry in dokData)
+                        {
+                            SeriesCollection.Add(new PieSeries
+                            {
+                                Title = entry.Category,
+                                Values = new ChartValues<int> { entry.Count },
+                                DataLabels = true,
+                                LabelPoint = chartPoint => $"{entry.Count} ({chartPoint.Participation:P})"
+                            });
+                        }
+                        break;
+
+                    default:
+                        break;
                 }
+                DataContext = null;
+                DataContext = this;
             }
             catch (Exception ex)
             {
