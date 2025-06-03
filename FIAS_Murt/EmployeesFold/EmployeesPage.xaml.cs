@@ -11,15 +11,14 @@ namespace FIAS_Murt.EmployeesFold
     /// </summary>
     public partial class EmployeesPage : Page
     {
-        private Frame mainFrame;
-        private FIAS_PraktikaEntities db;
+        private readonly FIAS_PraktikaEntities1 db;
 
         public EmployeesPage(Frame frame)
         {
             InitializeComponent();
             try
             {
-                db = new FIAS_PraktikaEntities();
+                db = new FIAS_PraktikaEntities1();
                 LoadData();
             }
             catch (Exception ex)
@@ -62,7 +61,7 @@ namespace FIAS_Murt.EmployeesFold
         {
             if (dataGridEmployees.SelectedItem is Employees selectedEmployee)
             {
-                FRDeleteWindow confirmWindow = new FRDeleteWindow
+                FRDeleteWindow confirmWindow = new()
                 {
                     Owner = Application.Current.MainWindow
                 };
@@ -72,15 +71,19 @@ namespace FIAS_Murt.EmployeesFold
                     {
                         db.Employees.Remove(selectedEmployee);
                         db.SaveChanges();
-                        MessageWindow successWindow = new MessageWindow("Запись успешно удалена");
-                        successWindow.Owner = Application.Current.MainWindow;
+                        MessageWindow successWindow = new("Запись успешно удалена")
+                        {
+                            Owner = Application.Current.MainWindow
+                        };
                         successWindow.ShowDialog();
                         LoadData();
                     }
                     catch (Exception ex)
                     {
-                        FailMessageWindow errorWindow = new FailMessageWindow("Ошибка при удалении: " + ex.Message);
-                        errorWindow.Owner = Application.Current.MainWindow;
+                        FailMessageWindow errorWindow = new("Ошибка при удалении: " + ex.Message)
+                        {
+                            Owner = Application.Current.MainWindow
+                        };
                         errorWindow.ShowDialog();
                     }
                 }

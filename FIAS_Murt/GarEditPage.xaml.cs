@@ -10,14 +10,14 @@ namespace FIAS_Murt
     public partial class GarEditPage : Page
     {
         private readonly Frame mainFrame;
-        private readonly FIAS_PraktikaEntities db;
+        private readonly FIAS_PraktikaEntities1 db;
         public GAR Gar { get; set; }
 
         private bool isNew;
 
         /// <summary>
         /// </summary>
-        public GarEditPage(Frame frame, FIAS_PraktikaEntities context, GAR gar)
+        public GarEditPage(Frame frame, FIAS_PraktikaEntities1 context, GAR gar)
         {
             InitializeComponent();
             mainFrame = frame;

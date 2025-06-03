@@ -25,10 +25,9 @@ namespace FIAS_Murt
             MainFrame.Content = new MainPage();
             this.KeyDown += MainWindow_KeyDown;
         }
-        private readonly List<Key> konamiCode = new()
-        { Key.Up, Key.Up, Key.Down, Key.Down, Key.Left, Key.Right, Key.Left, Key.Right};
+        private readonly List<Key> konamiCode = [Key.Up, Key.Up, Key.Down, Key.Down, Key.Left, Key.Right, Key.Left, Key.Right];
 
-        private List<Key> currentInput = new();
+        private readonly List<Key> currentInput = [];
 
         private void MainWindow_KeyDown(object sender, KeyEventArgs e)
         {

@@ -11,7 +11,7 @@ namespace FIAS_Murt.DokumentsFold
     /// </summary>
     public partial class DokumentsEditPage : Page
     {
-        private FIAS_PraktikaEntities db = new FIAS_PraktikaEntities();
+        private FIAS_PraktikaEntities1 db = new FIAS_PraktikaEntities1();
         private Dokuments currentDokument;
         private bool isNew;
 

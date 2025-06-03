@@ -12,7 +12,7 @@ namespace FIAS_Murt.Uvedoml
     /// </summary>
     public partial class UvedPage : Page
     {
-        private FIAS_PraktikaEntities db = new FIAS_PraktikaEntities();
+        private readonly FIAS_PraktikaEntities1 db = new();
 
         public UvedPage(Frame frame)
         {
@@ -46,7 +46,7 @@ namespace FIAS_Murt.Uvedoml
         {
             if (dataGridUved.SelectedItem is Uvedomleniya selectedUved)
             {
-                FRDeleteWindow confirmWindow = new FRDeleteWindow
+                FRDeleteWindow confirmWindow = new()
                 {
                     Owner = Application.Current.MainWindow
                 };
@@ -56,15 +56,19 @@ namespace FIAS_Murt.Uvedoml
                     {
                         db.Uvedomleniya.Remove(selectedUved);
                         db.SaveChanges();
-                        MessageWindow successWindow = new MessageWindow("Уведомление удалено!");
-                        successWindow.Owner = Application.Current.MainWindow;
+                        MessageWindow successWindow = new("Уведомление удалено!")
+                        {
+                            Owner = Application.Current.MainWindow
+                        };
                         successWindow.ShowDialog();
                         LoadData();
                     }
                     catch (Exception ex)
                     {
-                        FailMessageWindow errorWindow = new FailMessageWindow("Ошибка при удалении: " + ex.Message);
-                        errorWindow.Owner = Application.Current.MainWindow;
+                        FailMessageWindow errorWindow = new("Ошибка при удалении: " + ex.Message)
+                        {
+                            Owner = Application.Current.MainWindow
+                        };
                         errorWindow.ShowDialog();
                     }
                 }

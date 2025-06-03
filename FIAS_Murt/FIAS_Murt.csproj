@@ -70,16 +70,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AdresZayavkaProsm.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="adres_objects.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Adres_zayavka.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Dokuments.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DokumentsFold\DokumentsEditPage.xaml.cs">
       <DependentUpon>DokumentsEditPage.xaml</DependentUpon>
@@ -88,10 +88,10 @@
       <DependentUpon>DokumentsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="EmployeeActivity.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Employees.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EmployeesFold\EmployeesEditPage.xaml.cs">
       <DependentUpon>EmployeesEditPage.xaml</DependentUpon>
@@ -99,34 +99,29 @@
     <Compile Include="EmployeesFold\EmployeesPage.xaml.cs">
       <DependentUpon>EmployeesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FIAS.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FIAS.tt</DependentUpon>
-    </Compile>
     <Compile Include="FullAddressDetails_Result.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="FullGAR.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="GAR.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="GarEditPage.xaml.cs">
       <DependentUpon>GarEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="GetEmployee_Result.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="GraphicPage.xaml.cs">
       <DependentUpon>GraphicPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="History_adres.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Istor_izmen.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="MapPage.xaml.cs">
       <DependentUpon>MapPage.xaml</DependentUpon>
@@ -140,32 +135,38 @@
     <Compile Include="MessageWind\MessageWindow.xaml.cs">
       <DependentUpon>MessageWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
     <Compile Include="ReportsPage.xaml.cs">
       <DependentUpon>ReportsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
-    </Compile>
     <Compile Include="Type_status.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Type_uved.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Type_zayavki.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="UpdateUvedStatus_Result.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Uvedomleniya.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Uvedoml\UvedEditPage.xaml.cs">
       <DependentUpon>UvedEditPage.xaml</DependentUpon>
@@ -174,16 +175,16 @@
       <DependentUpon>UvedPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UvedProsm.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewsPage.xaml.cs">
       <DependentUpon>ViewsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Zayavka.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="ZayavkaDetails.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="ZayavkaFold\ZayavkaEditPage.xaml.cs">
       <DependentUpon>ZayavkaEditPage.xaml</DependentUpon>
@@ -192,7 +193,7 @@
       <DependentUpon>ZayavkaPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ZayavkaHistory_Result.cs">
-      <DependentUpon>FIAS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Page Include="DokumentsFold\DokumentsEditPage.xaml">
       <SubType>Designer</SubType>
@@ -233,16 +234,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FIAS.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FIAS.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FIAS.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FIAS.edmx</DependentUpon>
     </Compile>
     <Compile Include="GARPage.xaml.cs">
       <DependentUpon>GARPage.xaml</DependentUpon>
@@ -314,12 +305,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EntityDeploy Include="FIAS.edmx">
+    <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FIAS.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="FIAS.edmx.diagram">
-      <DependentUpon>FIAS.edmx</DependentUpon>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -330,16 +321,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FIAS.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>FIAS.Context.cs</LastGenOutput>
-      <DependentUpon>FIAS.edmx</DependentUpon>
-    </Content>
-    <Content Include="FIAS.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FIAS.edmx</DependentUpon>
-      <LastGenOutput>FIAS.cs</LastGenOutput>
-    </Content>
     <Resource Include="Resources\foxy.gif" />
     <Resource Include="Resources\animation.gif" />
     <Resource Include="Resources\Podderzh.png" />
@@ -357,6 +338,9 @@
   <ItemGroup>
     <PackageReference Include="EntityFramework">
       <Version>6.5.1</Version>
+    </PackageReference>
+    <PackageReference Include="EntityFramework.ru">
+      <Version>6.2.0</Version>
     </PackageReference>
     <PackageReference Include="EPPlus">
       <Version>7.6.1</Version>
@@ -376,6 +360,18 @@
     <PackageReference Include="WpfAnimatedGif">
       <Version>2.0.2</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

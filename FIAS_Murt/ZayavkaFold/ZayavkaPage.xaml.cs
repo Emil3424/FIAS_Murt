@@ -12,7 +12,7 @@ namespace FIAS_Murt.ZayavkaFold
     /// </summary>
     public partial class ZayavkaPage : Page
     {
-        private FIAS_PraktikaEntities db = new FIAS_PraktikaEntities();
+        private FIAS_PraktikaEntities1 db = new FIAS_PraktikaEntities1();
 
         public ZayavkaPage(Frame frame)
         {

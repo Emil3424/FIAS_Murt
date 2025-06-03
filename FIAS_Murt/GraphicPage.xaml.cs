@@ -10,7 +10,7 @@ namespace FIAS_Murt
     public partial class GraphicPage : Page
     {
         public SeriesCollection SeriesCollection { get; set; }
-        private FIAS_PraktikaEntities db = new FIAS_PraktikaEntities();
+        private FIAS_PraktikaEntities1 db = new FIAS_PraktikaEntities1();
 
         public GraphicPage(Frame frame)
         {

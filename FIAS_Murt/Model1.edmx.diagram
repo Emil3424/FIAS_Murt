@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="761b2f1224894ead99735f10f43a5c23" Name="Diagram1">
+        <EntityTypeShape EntityType="FIAS6Model.adres_objects" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FIAS6Model.Adres_zayavka" Width="1.5" PointX="6" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FIAS6Model.Dokuments" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FIAS6Model.Employees" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FIAS6Model.GAR" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FIAS6Model.History_adres" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FIAS6Model.Istor_izmen" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FIAS6Model.Type_status" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FIAS6Model.Type_uved" Width="1.5" PointX="8.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FIAS6Model.Type_zayavki" Width="1.5" PointX="6" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FIAS6Model.Uvedomleniya" Width="1.5" PointX="10.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FIAS6Model.Zayavka" Width="1.5" PointX="8.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="FIAS6Model.AdresZayavkaProsm" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FIAS6Model.EmployeeActivity" Width="1.5" PointX="2.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FIAS6Model.FullGAR" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FIAS6Model.UvedProsm" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FIAS6Model.ZayavkaDetails" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="FIAS6Model.FK__adres_obj__ID_GA__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="FIAS6Model.FK__Istor_izm__ID_ad__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="FIAS6Model.FK__Zayavka__Sozdate__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="FIAS6Model.FK__History_a__ID_GA__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="FIAS6Model.FK__Istor_izm__ID_GA__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="FIAS6Model.FK__Zayavka__ID_GAR__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="FIAS6Model.FK__Uvedomlen__Statu__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="FIAS6Model.FK__Uvedomlen__Type___619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="FIAS6Model.FK__Zayavka__Type_za__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="FIAS6Model.FK__Uvedomlen__ID_Za__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="FIAS6Model.GAR_Dok" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

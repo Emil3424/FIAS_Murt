@@ -11,9 +11,9 @@ namespace FIAS_Murt.EmployeesFold
     /// </summary>
     public partial class EmployeesEditPage : Page
     {
-        private FIAS_PraktikaEntities db = new FIAS_PraktikaEntities();
-        private Employees currentEmployee;
-        private bool isNew;
+        private readonly FIAS_PraktikaEntities1 db = new();
+        private readonly Employees currentEmployee;
+        private readonly bool isNew;
 
         public EmployeesEditPage(Employees employee)
         {
@@ -87,16 +87,20 @@ namespace FIAS_Murt.EmployeesFold
                 }
                 db.SaveChanges();
 
-                MessageWindow successWindow = new MessageWindow("Запись успешно сохранена");
-                successWindow.Owner = Application.Current.MainWindow;
+                MessageWindow successWindow = new("Запись успешно сохранена")
+                {
+                    Owner = Application.Current.MainWindow
+                };
                 successWindow.ShowDialog();
                 NavigationService navService = NavigationService.GetNavigationService(this);
                 navService.Navigate(new EmployeesPage(null));
             }
             catch (Exception ex)
             {
-                FailMessageWindow errorWindow = new FailMessageWindow("Ошибка при сохранении: " + ex.Message);
-                errorWindow.Owner = Application.Current.MainWindow;
+                FailMessageWindow errorWindow = new("Ошибка при сохранении: " + ex.Message)
+                {
+                    Owner = Application.Current.MainWindow
+                };
                 errorWindow.ShowDialog();
             }
         }

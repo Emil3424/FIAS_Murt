@@ -11,9 +11,9 @@ namespace FIAS_Murt.ZayavkaFold
     /// </summary>
     public partial class ZayavkaEditPage : Page
     {
-        private FIAS_PraktikaEntities db = new FIAS_PraktikaEntities();
-        private Zayavka currentZayavka;
-        private bool isNew;
+        private readonly FIAS_PraktikaEntities1 db = new();
+        private readonly Zayavka currentZayavka;
+        private readonly bool isNew;
 
         public ZayavkaEditPage(Zayavka zayavka)
         {
@@ -86,16 +86,20 @@ namespace FIAS_Murt.ZayavkaFold
                 }
                 db.SaveChanges();
 
-                MessageWindow successWindow = new MessageWindow("Запись успешно сохранена");
-                successWindow.Owner = Application.Current.MainWindow;
+                MessageWindow successWindow = new("Запись успешно сохранена")
+                {
+                    Owner = Application.Current.MainWindow
+                };
                 successWindow.ShowDialog();
                 NavigationService navService = NavigationService.GetNavigationService(this);
                 navService.Navigate(new ZayavkaPage(null));
             }
             catch (Exception ex)
             {
-                FailMessageWindow errorWindow = new FailMessageWindow("Ошибка при сохранении: " + ex.Message);
-                errorWindow.Owner = Application.Current.MainWindow;
+                FailMessageWindow errorWindow = new("Ошибка при сохранении: " + ex.Message)
+                {
+                    Owner = Application.Current.MainWindow
+                };
                 errorWindow.ShowDialog();
             }
         }

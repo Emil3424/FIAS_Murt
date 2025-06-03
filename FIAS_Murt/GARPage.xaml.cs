@@ -12,7 +12,7 @@ namespace FIAS_Murt
     public partial class GARPage : Page
     {
         private readonly Frame mainFrame;
-        private readonly FIAS_PraktikaEntities db;
+        private readonly FIAS_PraktikaEntities1 db;
 
         public GARPage(Frame frame)
         {
@@ -20,7 +20,7 @@ namespace FIAS_Murt
 
             try
             {
-                db = new FIAS_PraktikaEntities();
+                db = new FIAS_PraktikaEntities1();
                 LoadData();
             }
             catch (Exception ex)
@@ -69,7 +69,7 @@ namespace FIAS_Murt
         {
             if (dataGridGar.SelectedItem is GAR selectedEmployee)
             {
-                FRDeleteWindow confirmWindow = new FRDeleteWindow
+                FRDeleteWindow confirmWindow = new()
                 {
                     Owner = Application.Current.MainWindow
                 };
@@ -79,7 +79,7 @@ namespace FIAS_Murt
                     {
                         db.GAR.Remove(selectedEmployee);
                         db.SaveChanges();
-                        MessageWindow successWindow = new MessageWindow("Запись успешно удалена")
+                        MessageWindow successWindow = new("Запись успешно удалена")
                         {
                             Owner = Application.Current.MainWindow
                         };
@@ -89,7 +89,7 @@ namespace FIAS_Murt
                     catch (Exception ex)
                     {
                         // Показываем окно ошибки
-                        FailMessageWindow errorWindow = new FailMessageWindow("Ошибка при удалении: " + ex.Message)
+                        FailMessageWindow errorWindow = new("Ошибка при удалении: " + ex.Message)
                         {
                             Owner = Application.Current.MainWindow
                         };

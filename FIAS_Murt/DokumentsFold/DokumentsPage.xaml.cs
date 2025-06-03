@@ -12,7 +12,7 @@ namespace FIAS_Murt.DokumentsFold
     /// </summary>
     public partial class DokumentsPage : Page
     {
-        private FIAS_PraktikaEntities db = new FIAS_PraktikaEntities();
+        private FIAS_PraktikaEntities1 db = new FIAS_PraktikaEntities1();
 
         public DokumentsPage(Frame frame)
         {

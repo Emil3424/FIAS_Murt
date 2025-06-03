@@ -11,8 +11,8 @@ namespace FIAS_Murt.Uvedoml
     /// </summary>
     public partial class UvedEditPage : Page
     {
-        private FIAS_PraktikaEntities db = new FIAS_PraktikaEntities();
-        private Uvedomleniya currentUved;
+        private readonly FIAS_PraktikaEntities1 db = new();
+        private readonly Uvedomleniya currentUved;
 
         public UvedEditPage(Uvedomleniya uved)
         {
@@ -51,16 +51,20 @@ namespace FIAS_Murt.Uvedoml
                 }
 
                 db.SaveChanges();
-                MessageWindow successWindow = new MessageWindow("Уведомление сохранено!");
-                successWindow.Owner = Application.Current.MainWindow;
+                MessageWindow successWindow = new("Уведомление сохранено!")
+                {
+                    Owner = Application.Current.MainWindow
+                };
                 successWindow.ShowDialog();
                 NavigationService navService = NavigationService.GetNavigationService(this);
                 navService.Navigate(new UvedPage(null));
             }
             catch (Exception ex)
             {
-                FailMessageWindow errorWindow = new FailMessageWindow("Ошибка при сохранении: " + ex.Message);
-                errorWindow.Owner = Application.Current.MainWindow;
+                FailMessageWindow errorWindow = new("Ошибка при сохранении: " + ex.Message)
+                {
+                    Owner = Application.Current.MainWindow
+                };
                 errorWindow.ShowDialog();
             }
         }

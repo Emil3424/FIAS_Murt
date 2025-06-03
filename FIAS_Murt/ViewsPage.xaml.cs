@@ -7,7 +7,7 @@ namespace FIAS_Murt
 {
     public partial class ViewsPage : Page
     {
-        private readonly FIAS_PraktikaEntities db = new FIAS_PraktikaEntities();
+        private readonly FIAS_PraktikaEntities1 db = new FIAS_PraktikaEntities1();
 
         public ViewsPage(Frame frame)
         {

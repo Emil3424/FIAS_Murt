@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using Word = Microsoft.Office.Interop.Word;
 
 namespace FIAS_Murt
 {
@@ -14,7 +13,7 @@ namespace FIAS_Murt
     /// </summary>
     public partial class ReportsPage : Page
     {
-        private FIAS_PraktikaEntities db = new FIAS_PraktikaEntities();
+        private FIAS_PraktikaEntities1 db = new FIAS_PraktikaEntities1();
 
         public ReportsPage(Frame frame)
         {
